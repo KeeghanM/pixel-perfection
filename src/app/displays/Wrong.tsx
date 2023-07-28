@@ -1,11 +1,11 @@
 import { challenge, css, html, globalCss } from "../_store";
 
 export default function Wrong() {
-    return (<div class="flex flex-col items-center">
+    return (<div class="flex-1 flex flex-col items-center h-full">
             <h3>Wrong</h3>
             <iframe
                 id="wrongIframe"
-                class="border-none w-full"
+                class="border-none w-full h-full"
                 srcdoc={
                     `<html>
                     <head>

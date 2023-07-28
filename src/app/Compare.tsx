@@ -1,4 +1,6 @@
-import html2canvas from "html2canvas";
+
+import * as htmlToImage from 'html-to-image';
+import { toPng } from 'html-to-image';
 import { createSignal } from "solid-js";
 
 export default function Compare() {
@@ -8,6 +10,7 @@ export default function Compare() {
     const [matchPercentage, setMatchPercentage] = createSignal(0);
     const [modalShown, setModalShown] = createSignal(false);
     const [loadingPercentage, setLoadingPercentage] = createSignal(0);
+    const [sizeString, setSizeString] = createSignal("");
 
     const calculateWeightedPercentage = (rawPercentage: number): number => {
         if (rawPercentage >= 1) {
@@ -38,6 +41,32 @@ export default function Compare() {
         }
         return `rgb(${Math.round(r)}, ${Math.round(g)}, 0)`;
     }
+
+    const imageToPixelData = (dataURL: string): Promise<{data:Uint8ClampedArray,size:{width:number,height:number}} | undefined> => {
+    return new Promise((resolve, reject) => {
+        let image = new Image();
+        image.src = dataURL;
+        image.onload = () => {
+            var canvas = document.createElement("canvas");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            var ctx = canvas.getContext("2d");
+            if (ctx) {
+                ctx.drawImage(image, 0, 0);
+                resolve({
+                    data:ctx.getImageData(0, 0, canvas.width, canvas.height).data,
+                    size: {
+                        width: canvas.width,
+                        height: canvas.height
+                    }}
+                    );
+            } else {
+                reject(new Error("Unable to get 2D context from canvas"));
+            }
+        };
+        image.onerror = err => reject(err);
+    });
+};
     
     const runTest = async () => {
         setModalShown(true);
@@ -51,19 +80,18 @@ export default function Compare() {
         const wrongScreen = wrongIframe?.contentDocument?.body as HTMLBodyElement;
         const correctIframe = document.getElementById("correctIframe") as HTMLIFrameElement;
         const correctScreen = correctIframe?.contentDocument?.body as HTMLBodyElement;
-        let wrongPixelData: Uint8ClampedArray | undefined;
-        let correctPixelData: Uint8ClampedArray | undefined;
 
-        await html2canvas(wrongScreen).then(canvas => {
-            const url = canvas.toDataURL("image/png");
-            wrongPixelData = canvas.getContext("2d")?.getImageData(0, 0, canvas.width, canvas.height).data;
-            setWrongImage(url);
-        })
-        await html2canvas(correctScreen).then(canvas => {
-            const url = canvas.toDataURL("image/png");
-            correctPixelData = canvas.getContext("2d")?.getImageData(0, 0, canvas.width, canvas.height).data;
-            setCorrectImage(url);
-        })
+        const wrongUrl = await htmlToImage.toPng(wrongScreen)
+        const wrongData = await imageToPixelData(wrongUrl);
+        const wrongPixelData = wrongData?.data;
+        setSizeString(`width: ${wrongData?.size.width}px; height: ${wrongData?.size.height}px;`)
+
+        const correctUrl = await htmlToImage.toPng(correctScreen)
+        const correctData = await imageToPixelData(correctUrl);
+        const correctPixelData = correctData?.data;
+
+        setWrongImage(wrongUrl);
+        setCorrectImage(correctUrl);
 
         if (wrongPixelData && correctPixelData) {
             let match = 0;
@@ -106,7 +134,7 @@ export default function Compare() {
                         </div>
                     </>
                 ) : (
-                    <div class="mt-4 mx-auto w-[300px] flex flex-col justify-center items-center">
+                    <div class="mt-4 mx-auto w-fit flex flex-col justify-center">
                         <h3 class="text-3xl font-bold mb-6 w-full text-center">Match Percentage:{" "}
                         <span
                         style={
@@ -118,12 +146,12 @@ export default function Compare() {
                             <input type="range" min="0" max="1" step="0.01" value={opacity()} oninput={e => setOpacity(parseFloat(e.target.value))} />
                             <p>Wrong</p>
                         </div>
-                        <div class="relative w-[300px] h-[300px]">
-                            <div class="absolute inset-0" >
-                                <img src={correctImage()} alt="Correct Image" width="300px" />
+                        <div class="relative" style={sizeString()}>
+                            <div class="absolute inset-0 w-fit mx-auto left-0 right-0" >
+                                <img src={correctImage()} alt="Correct Image" />
                             </div>
-                            <div class="absolute inset-0" style={`opacity: ${opacity()};`}>
-                                <img src={wrongImage()} alt="Wrong Image" width="300px" />
+                            <div class="absolute inset-0 w-fit mx-auto left-0 right-0" style={`opacity: ${opacity()};`}>
+                                <img src={wrongImage()} alt="Wrong Image"  />
                             </div>
                         </div>
                         <button

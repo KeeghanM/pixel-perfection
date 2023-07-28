@@ -24,13 +24,9 @@ export default function Main() {
                     <h1 class="mt-6 mb-2 text-4xl text-blue-500">{challenge().name}</h1>
                     <p class="text-xl leading-7 max-w-screen-md mx-auto mb-6">{challenge().description}</p>
                 </div>
-                <div class="flex gap-2">
-                    <div class="w-1/2">
+                <div class="flex gap-2 flex-1">
                         <Correct />
-                    </div>
-                    <div class="w-1/2">
                         <Wrong />
-                    </div>
                 </div>
                 <Compare />
                 <Swapper />
