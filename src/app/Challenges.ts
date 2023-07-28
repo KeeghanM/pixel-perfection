@@ -56,7 +56,7 @@ input {
   border: none;
   padding: 0.5rem 1rem;
   background: rgb(210,180,250);
-  border-radius: 15px 0 0 15px;
+  border-radius: 5px 0 0 5px;
   color: black;
 }
 button {
@@ -65,7 +65,7 @@ button {
   color: white;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 5px 5px 0;
 }`,
   },
 ]
