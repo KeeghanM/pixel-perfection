@@ -1,7 +1,7 @@
 
 import * as htmlToImage from 'html-to-image';
-import { toPng } from 'html-to-image';
 import { createSignal } from "solid-js";
+import Confetti from './Confetti';
 
 export default function Compare() {
     const [wrongImage, setWrongImage] = createSignal<string | undefined>(undefined);
@@ -131,6 +131,7 @@ export default function Compare() {
                         <div class="relative w-full h-10">
                             <div class="h-10 bg-blue-500 rounded-full" style={`width: ${loadingPercentage()}%;`}></div>
                             <span class="absolute w-fit mx-auto right-0 left-0 top-2">Calculating...</span>
+                            {loadingPercentage() >= 100 ? (<Confetti />) : (<></>)}
                         </div>
                     </>
                 ) : (

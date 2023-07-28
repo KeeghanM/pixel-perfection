@@ -6,6 +6,7 @@ import Correct from "./displays/Correct";
 import Wrong from "./displays/Wrong";
 import Compare from "./Compare";
 import { Swapper } from "./Swapper";
+import Confetti from "./Confetti";
 
 export default function Main() {
 

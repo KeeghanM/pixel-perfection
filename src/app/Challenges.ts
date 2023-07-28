@@ -3,7 +3,9 @@ export const Challenges = [
     id: 0,
     name: "Tutorial Challenge",
     description: "Welcome to the tutorial! All you need to do is correct the below invalid CSS to make the 'wrong' design look like the 'correct' design.",
-    HTML: `<h1><span>Hello,</span> world.</h1>`,
+    HTML: `<h1>
+  <span>Hello,</span> world.
+</h1>`,
     generalCSS: "",
     correctCSS: `h1 {
             color: rgb(100,100,255);
@@ -13,18 +15,17 @@ export const Challenges = [
             color: rgb(80,30,155);
         }`,
     wrongCSS: `h1 {
-            color: rgb(100,100,255);
-        }`,
+  color: rgb(100,100,255);
+}`,
   },
   {
     id: 1,
     name: "Size matters!",
     description: "On something as simple as an input, details matter. Make the 'wrong' design look like the 'correct' design.",
-    HTML: `
-        <div>
-        <input type="text" placeholder="Enter your name here" />
-        <button>Submit</button>
-        </div>
+    HTML: `<div>
+  <input type="text" placeholder="Enter your name here" />
+  <button>Submit</button>
+</div>
         `,
     generalCSS: "",
     correctCSS: `div {
