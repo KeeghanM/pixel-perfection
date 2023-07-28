@@ -1,18 +1,16 @@
-import { challenge, css, html } from "../_store";
+import { challenge, css, html, globalCss } from "../_store";
 
 export default function Wrong() {
-    return (
-        <div class="w-[300px] h-[300px] flex flex-col items-center">
+    return (<div class="flex flex-col items-center">
             <h3>Wrong</h3>
             <iframe
-                width="300px"
-                height="300px"
                 id="wrongIframe"
-                style="border:none;"
+                class="border-none w-full"
                 srcdoc={
                     `<html>
                     <head>
                         <style>
+                            ${globalCss()}
                             ${challenge().generalCSS}
                             ${css()}
                         </style>
@@ -22,6 +20,6 @@ export default function Wrong() {
                     </body>
                 </html>`}
             />
-        </div>
+            </div>
     )
 }
