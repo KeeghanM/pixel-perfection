@@ -1,7 +1,7 @@
 
 import { onMount } from "solid-js";
 import { challenge, setCss, setHtml } from "./_store";
-import Editors from "./Editors";
+import Editors from "./editors/Editors";
 import Correct from "./displays/Correct";
 import Wrong from "./displays/Wrong";
 import Compare from "./Compare";
