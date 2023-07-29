@@ -12,7 +12,7 @@ const one = 1
     style='display: flex; flex-direction: column; align-items: center; justify-content: center; position:sticky; top:0; width:100%;'
   >
     <h1
-      class='text-2xl md:text-4xl lg:text-6xl flex flex-col items-center w-fit mx-auto text-center'
+      class='text-2xl md:text-4xl lg:text-6xl flex flex-col items-center w-fit mx-auto text-center select-none'
     >
       <span
         id='brand'
@@ -24,6 +24,7 @@ const one = 1
 </div>
 
 <script>
+  import { lerp } from '../../lib/lerp'
   const baseFontSize = parseFloat(
     window.getComputedStyle(document.documentElement).fontSize
   )
@@ -37,40 +38,39 @@ const one = 1
     return Math.min(Math.max(percentage, 0), 1)
   }
 
-  const lerp = (start: number, end: number, t: number) => {
-    return start * (1 - t) + end * t
-  }
+  const heroContainer = document.getElementById(
+    'hero-container'
+  ) as HTMLDivElement
+  const hero = document.getElementById('hero') as HTMLDivElement
+  const heroTitle = hero?.querySelector('h1') as HTMLHeadingElement
+  const heroTitleSpan = heroTitle?.querySelector(
+    'span#brand'
+  ) as HTMLSpanElement
 
-  const heroContainer = document.getElementById('hero-container')
-  const hero = document.getElementById('hero')
-  const heroTitle = hero?.querySelector('h1')
-  const heroTitleSpan = heroTitle?.querySelector('span#brand')
-
-  let heroTitleStyle = window.getComputedStyle(heroTitle)
-  let heroTitleFontSize = heroTitleStyle.getPropertyValue('font-size')
+  const heroTitleStyle = window.getComputedStyle(heroTitle)
+  const heroTitleFontSize = heroTitleStyle.getPropertyValue('font-size')
   const startingTitleSize =
     Number(heroTitleFontSize?.replace('px', '')) / baseFontSize
 
-  let heroTitleSpanStyle = window.getComputedStyle(heroTitleSpan)
-  let heroTitleSpanFontSize = heroTitleSpanStyle.getPropertyValue('font-size')
+  const heroTitleSpanStyle = window.getComputedStyle(heroTitleSpan)
+  const heroTitleSpanFontSize = heroTitleSpanStyle.getPropertyValue('font-size')
   const startingTitleSpanSize =
     Number(heroTitleSpanFontSize?.replace('px', '')) / baseFontSize
 
-  const heroTitleTagline = heroTitle?.querySelector('span#tag')
+  const heroTitleTagline = heroTitle?.querySelector(
+    'span#tag'
+  ) as HTMLSpanElement
 
   const handleScroll = () => {
     if (!hero || !heroTitle || !heroTitleSpan || !heroContainer) return
 
     const progress = percentage()
-    // lerp the hero height from 100vh to 10vh
     const heroHeight = lerp(100, 10, progress)
     hero.style.height = `${heroHeight}vh`
 
-    // lerp the hero title font size from starting to 1.875rem
     const titleSize = lerp(startingTitleSize, 1.875, progress)
     heroTitle?.style.setProperty('font-size', `${titleSize}rem`)
 
-    // lerp the hero title span font size from starting to 2.5rem
     const titleSpanSize = lerp(startingTitleSpanSize, 2.5, progress)
     heroTitleSpan?.style.setProperty('font-size', `${titleSpanSize}rem`)
 
@@ -78,7 +78,8 @@ const one = 1
       if (heroTitle.style.flexDirection === 'row') return
 
       heroTitleSpan.classList.remove('mb-4')
-      hero.classList.add('bg-blue-500')
+      heroTitleSpan.classList.add('text-blue-500')
+      hero.classList.add('bg-white', 'dark:bg-gray-900')
       heroContainer.classList.add('sticky', 'top-0', 'z-10')
       heroContainer.classList.remove('items-center', 'justify-center')
       heroTitleTagline?.classList.add('hidden')
@@ -86,7 +87,8 @@ const one = 1
       if (heroTitle.style.flexDirection === 'column') return
 
       heroTitleSpan.classList.add('mb-4')
-      hero.classList.remove('bg-blue-500')
+      heroTitleSpan.classList.remove('text-blue-500')
+      hero.classList.remove('bg-white', 'dark:bg-gray-900')
       heroContainer.classList.remove('sticky', 'top-0', 'z-10')
       heroContainer.classList.add('items-center', 'justify-center')
       heroTitleTagline?.classList.remove('hidden')

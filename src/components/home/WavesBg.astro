@@ -1,0 +1,40 @@
+---
+
+---
+
+<div class='fixed inset-0 -z-10'>
+  <svg
+    id='wavesBg'
+    viewBox='0 0 900 600'
+    class='h-full left-0'
+    xmlns='http://www.w3.org/2000/svg'
+    xmlns:xlink='http://www.w3.org/1999/xlink'
+    version='1.1'
+    ><path
+      d='M279 0L271.7 20C264.3 40 249.7 80 233 120C216.3 160 197.7 200 212.3 240C227 280 275 320 307.2 360C339.3 400 355.7 440 351.5 480C347.3 520 322.7 560 310.3 580L298 600L0 600L0 580C0 560 0 520 0 480C0 440 0 400 0 360C0 320 0 280 0 240C0 200 0 160 0 120C0 80 0 40 0 20L0 0Z'
+      class='transition-colors duration-[20s]'
+      style='fill: #3b82f6;'
+      stroke-linecap='round'
+      stroke-linejoin='miter'
+    ></path></svg
+  >
+</div>
+
+<script>
+  const path = document.querySelector('#wavesBg path') as SVGPathElement
+  const colors = [
+    [193, 73, 83],
+    [69, 31, 85],
+    [59, 130, 246],
+    [18, 102, 79],
+    [234, 217, 76],
+  ]
+  let i = 0
+  const changeColor = () => {
+    path.style.fill = `rgb(${colors[i][0]}, ${colors[i][1]}, ${colors[i][2]})`
+    i++
+    if (i === colors.length) i = 0
+  }
+  changeColor()
+  setInterval(changeColor, 20000)
+</script>

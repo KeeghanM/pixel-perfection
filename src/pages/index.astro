@@ -1,78 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/home/Hero.astro'
+import WavesBg from '../components/home/WavesBg.astro'
+import HowItWorks from '../components/home/HowItWorks.astro'
 ---
 
 <Layout
   title='PixelPerfection - Training and practice challenges for devs'
   description='Want to improve your attention to detail? Struggle align designs perfectly to a design? Or instead, want to prove you can! Test your mettle with PixelPerfection.'
 >
-  <div class='fixed inset-0 -z-10'>
-    <svg
-      viewBox='0 0 900 600'
-      class='h-full left-0'
-      xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
-      version='1.1'
-      ><path
-        d='M279 0L271.7 20C264.3 40 249.7 80 233 120C216.3 160 197.7 200 212.3 240C227 280 275 320 307.2 360C339.3 400 355.7 440 351.5 480C347.3 520 322.7 560 310.3 580L298 600L0 600L0 580C0 560 0 520 0 480C0 440 0 400 0 360C0 320 0 280 0 240C0 200 0 160 0 120C0 80 0 40 0 20L0 0Z'
-        class='fill-blue-600'
-        stroke-linecap='round'
-        stroke-linejoin='miter'
-      ></path></svg
-    >
-  </div>
+  <WavesBg />
   <Hero />
   <div
     class='w-full md:max-w-screen-md mx-auto text-2xl text-center px-4 md:px-12'
   >
-    <p class='mb-24'>
+    <p>
       Welcome to PixelPerfection, the ultimate challenge for detail-oriented
       developers. Spot the differences, correct the code, and achieve pixel
       perfect results. Are you ready to play and learn?
     </p>
-    <button>Lets go!</button>
-    <h2>What is PixelPerfection?</h2>
-    <p class='mb-24'>
+    <button
+      class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full my-24'
+      >Lets go!</button
+    >
+    <h2 class='text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4'>
+      What is PixelPerfection?
+    </h2>
+    <p>
       PixelPerfection isn't just a coding challenge, it's a game of detail,
       precision, and coding prowess. As a detective, problem-solver, and
       developer, you'll work to transform the wrong design into a perfect match.
       It's fun, it's competitive, and it's the perfect way to improve your
       skills. Compete with your friends, earn XP, and climb up the leaderboard.
     </p>
-    <h2>How does it work?</h2>
-    <ul>
-      <li class='mb-24'>
-        <span>Choose Your Challenge:</span> Pick from a variety of challenges
-        that test different aspects of your HTML and CSS knowledge. Each
-        challenge presents you with two designs - one perfect and one
-        not-so-perfect. Your task is to spot the differences and make the
-        incorrect design match the perfect one.
-      </li>
-      <li class='mb-24'>
-        <span>Spot the Differences:</span> Use your keen eye for detail to
-        identify the inconsistencies between the two designs. Is it a color
-        that's off? Maybe the padding isn't quite right, or perhaps an element
-        is misaligned. The devil is in the detail!
-      </li>
-      <li class='mb-24'>
-        <span>Correct the Code:</span> You're given the existing code for the
-        incorrect design. Your mission, should you choose to accept it, is to
-        dive into the HTML and CSS and fix the issues. Your changes will update
-        the design in real time, so you can see the effect of your code
-        adjustments.
-      </li>
-      <li class='mb-24'>
-        <span>Achieve PixelPerfection:</span> Keep refining until you can't tell
-        the difference between the two designs. Voila, you've achieved
-        PixelPerfection!
-      </li>
-      <li class='mb-24'>
-        <span>Level Up:</span> Complete challenges to earn experience points
-        (XP). The faster and more accurately you solve them, the more XP you
-        earn. Track your progress, climb the leaderboard, and become a
-        PixelPerfection champion!
-      </li>
-    </ul>
   </div>
+  <HowItWorks />
 </Layout>
