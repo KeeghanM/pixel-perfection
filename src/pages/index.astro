@@ -1,8 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Main from '../app/Main.tsx';
+import Layout from '../layouts/Layout.astro'
+import MainApp from '../app/Main.tsx'
 ---
 
-<Layout title="PixelPerfection - Training and practice challenges for devs" description='Want to improve your attention to detail? Struggle align designs perfectly to a design? Or instead, want to prove you can! Test your mettle with PixelPerfection.'>
-		<Main client:load />
+<Layout
+  title='PixelPerfection - Training and practice challenges for devs'
+  description='Want to improve your attention to detail? Struggle align designs perfectly to a design? Or instead, want to prove you can! Test your mettle with PixelPerfection.'
+>
+  <MainApp client:load />
 </Layout>

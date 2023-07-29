@@ -1,34 +1,50 @@
---- 
+---
 interface Props {
-	title: string;
-	description: string;
+  title: string
+  description: string
 }
-import Header from '../components/Header.astro';
-const { title ,description} = Astro.props;
+import Header from '../components/Header.astro'
+const { title, description } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description}>
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="bg-white text-gray-800 dark:text-gray-100 dark:bg-gray-800">
-		<Header />
-		<slot />
-	</body>
+<html
+  lang='en'
+  class='dark'
+>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content={description}
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+    <title>{title}</title>
+  </head>
+  <body class='bg-white text-gray-800 dark:text-gray-100 dark:bg-gray-800'>
+    <Header />
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	html {
-		scroll-behavior: smooth;
-	}
-	.cm-editor{
-		height: 300px;
-		max-height: 300px;
-	}
+  html {
+    scroll-behavior: smooth;
+  }
+  .cm-editor {
+    height: 300px;
+    max-height: 300px;
+  }
 </style>
