@@ -40,13 +40,13 @@ const { title, description } = Astro.props
       crossorigin
     />
     <link
-      href='https://fonts.googleapis.com/css2?family=Lato&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap'
       rel='stylesheet'
     />
     <title>{title}</title>
   </head>
   <body
-    class='bg-gray-100 text-gray-800 dark:text-gray-100 dark:bg-gray-800 overflow-x-hidden -mb-4'
+    class='bg-gray-100 text-gray-800 dark:text-gray-100 dark:bg-gray-800 overflow-x-hidden -mb-4 font-lato'
   >
     <slot />
   </body>
@@ -61,4 +61,3 @@ const { title, description } = Astro.props
     max-height: 300px;
   }
 </style>
- ../app/ThemeToggle

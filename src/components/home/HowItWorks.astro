@@ -3,10 +3,10 @@ const steps = [
   {
     title: 'Choose Your Challenge',
     description:
-      'Pick from a variety of challenges that test different aspects of your HTML and CSS knowledge. Each challenge presents you with two designs - one perfect and one not-so-perfect. Your task is to spot the differences and make the incorrect design match the perfect one.',
+      'Choose from a variety of challenges, each with a different design and difficulty level. The challenges are designed to both test your HTML and CSS skills, and to help you develop a keen eye for detail.',
   },
   {
-    title: 'Spot the Differences',
+    title: 'Spot the Difference',
     description:
       "Use your keen eye for detail to identify the inconsistencies between the two designs. Is it a color that's off? Maybe the padding isn't quite right, or perhaps an element is misaligned. The devil is in the detail!",
   },
@@ -18,7 +18,7 @@ const steps = [
   {
     title: 'Achieve PixelPerfection',
     description:
-      "Keep refining until you can't tell the difference between the two designs. Voila, you've achieved PixelPerfection!",
+      "Keep refining until you can't tell the difference between the two designs. Use the comparison tool to get your rating and see the designs overlayed. Voila, you've achieved PixelPerfection!",
   },
   {
     title: 'Level Up',
@@ -28,23 +28,31 @@ const steps = [
 ]
 ---
 
-<ul
-  class='text-left pt-16 max-w-screen-md mx-auto bg-gradient-to-b from-transparent to-white to-20% dark:to-gray-900'
+<div
+  class='w-full bg-gradient-to-b from-transparent to-white to-[200px] dark:to-gray-800 pb-24 flex flex-col items-center justify-center'
 >
-  {
-    steps.map(({ title, description }, index) => (
-      <li class='flex gap-2 mb-4 w-full px-2 mx-auto max-w-screen-md'>
-        <div class='flex flex-col w-16 items-center'>
-          <div class='w-16 h-16 font-lato text-4xl text-gray-700 dark:text-white relative flex items-center justify-center font-bold mb-4'>
-            <span>{index + 1}</span>
+  <ul class='text-left mt-[100px]'>
+    {
+      steps.map(({ title, description }, index) => (
+        <li class='flex gap-2 mb-4 w-full px-2 mx-auto max-w-screen-md'>
+          <div class='flex flex-col w-16 items-center'>
+            <div class='w-16 h-16 font-lato text-4xl text-gray-700 dark:text-white relative flex items-center justify-center font-bold mb-4'>
+              <span>{index + 1}</span>
+            </div>
+            <div class='w-[4px] h-full bg-gray-700 dark:bg-white' />
           </div>
-          <div class='w-[4px] h-full bg-gray-700 dark:bg-white' />
-        </div>
-        <div class='pb-12 px-6'>
-          <h3 class='font-bold text-2xl text-blue-500'>{title}</h3>
-          <p class='text-xl'>{description}</p>
-        </div>
-      </li>
-    ))
-  }
-</ul>
+          <div class='pb-12 px-6'>
+            <h3 class='font-bold text-2xl text-blue-500'>{title}</h3>
+            <p class='text-xl'>{description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href='/app'
+    class='bg-blue-500 text-2xl hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'
+    >Let's perfect some pixels!</a
+  >
+</div>

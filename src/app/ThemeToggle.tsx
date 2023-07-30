@@ -1,5 +1,5 @@
 import { createEffect } from 'solid-js'
-import { theme, setTheme } from '../app/_store'
+import { theme, setTheme } from './_store'
 
 export default function ThemeToggle() {
   createEffect(() => {
