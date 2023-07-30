@@ -28,15 +28,17 @@ const steps = [
 ]
 ---
 
-<ul class='text-left pt-16 max-w-screen-md mx-auto'>
+<ul
+  class='text-left pt-16 max-w-screen-md mx-auto bg-gradient-to-b from-transparent to-white to-20% dark:to-gray-900'
+>
   {
     steps.map(({ title, description }, index) => (
       <li class='flex gap-2 mb-4 w-full px-2 mx-auto max-w-screen-md'>
         <div class='flex flex-col w-16 items-center'>
-          <div class='w-16 h-16 font-lato text-4xl text-white relative flex items-center justify-center font-bold mb-4'>
+          <div class='w-16 h-16 font-lato text-4xl text-gray-700 dark:text-white relative flex items-center justify-center font-bold mb-4'>
             <span>{index + 1}</span>
           </div>
-          <div class='w-[4px] h-full bg-white' />
+          <div class='w-[4px] h-full bg-gray-700 dark:bg-white' />
         </div>
         <div class='pb-12 px-6'>
           <h3 class='font-bold text-2xl text-blue-500'>{title}</h3>
@@ -46,18 +48,3 @@ const steps = [
     ))
   }
 </ul>
-
-<style>
-  ul {
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      #1f2937 100px,
-      #111827 100%
-    );
-  }
-
-  .dark ul {
-    background: linear-gradient(180deg, transparent 0%, #ddd 100px, #fff 100%);
-  }
-</style>
