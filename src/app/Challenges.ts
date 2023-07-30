@@ -1,9 +1,23 @@
-export const Challenges = [
+export type Challenge = {
+  id: number
+  name: string
+  HTML: string
+  generalCSS: string
+  description: string
+  correctCSS: string
+  wrongCSS: string
+  width: number
+  height: number
+}
+
+export const Challenges: Challenge[] = [
   {
     id: 0,
     name: 'Tutorial Challenge',
     description:
       "Welcome to the tutorial! All you need to do is correct the below invalid CSS to make the 'wrong' design look like the 'correct' design.",
+    width: 300,
+    height: 300,
     HTML: `<h1>
   <span>Hello,</span> world.
 </h1>`,
@@ -24,6 +38,8 @@ export const Challenges = [
     name: 'Size matters!',
     description:
       "On something as simple as an input, details matter. Make the 'wrong' design look like the 'correct' design.",
+    width: 500,
+    height: 300,
     HTML: `<div>
   <input type="text" placeholder="Enter your name here" />
   <button>Submit</button>

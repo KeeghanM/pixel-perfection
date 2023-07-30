@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { Challenges } from './Challenges'
+import { Challenge, Challenges } from './Challenges'
 
 export const [theme, setTheme] = createSignal<'light' | 'dark'>('dark')
 

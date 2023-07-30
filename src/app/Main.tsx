@@ -15,26 +15,22 @@ export default function Main() {
 
   return (
     <>
-      <div class='fixed z-50 flex w-full justify-end p-2 md:p-4 lg:p-6'>
+      <div class='fixed right-0 top-0 flex p-2 md:p-4 lg:p-6'>
         <ThemeToggle />
       </div>
-      <div class='grid h-[80vh] grid-cols-[minmax(30vw,_450px)_1fr] py-12'>
-        <div class='flex flex-1 flex-col'>
-          <Editors />
+      <div class='h-screen max-h-screen'>
+        <div class='w-full bg-gray-300 py-4 text-center dark:bg-gray-900'>
+          <Swapper />
+          <Compare />
         </div>
-        <div class='flex flex-col gap-2'>
-          <div class='w-full text-center'>
-            <h1 class='mb-2 mt-6 text-4xl text-blue-500'>{challenge().name}</h1>
-            <p class='mx-auto mb-6 max-w-screen-md text-xl leading-7'>
-              {challenge().description}
-            </p>
+        <div class='grid grid-cols-[minmax(30vw,_450px)_1fr] px-6 py-12'>
+          <div class='flex h-full flex-col'>
+            <Editors />
           </div>
-          <div class='flex flex-1 gap-2'>
+          <div class='flex h-full items-center justify-center gap-2'>
             <Correct />
             <Wrong />
           </div>
-          <Compare />
-          <Swapper />
         </div>
       </div>
     </>
