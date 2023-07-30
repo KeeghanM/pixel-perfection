@@ -15,6 +15,14 @@ export default function Main() {
 
   return (
     <>
+      <div class='fixed left-0 top-0 p-2 md:p-4 lg:p-6'>
+        <a
+          class='rounded-full bg-red-300 px-4 py-2 font-bold text-gray-800 hover:bg-red-400'
+          href='/'
+        >
+          Exit
+        </a>
+      </div>
       <div class='fixed right-0 top-0 flex p-2 md:p-4 lg:p-6'>
         <ThemeToggle />
       </div>
