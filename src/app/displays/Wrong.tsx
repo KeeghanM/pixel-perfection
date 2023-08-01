@@ -1,4 +1,4 @@
-import { challenge, css, html, globalCss } from '../_store'
+import { challenge, css, html, globalCss, displayColor } from '../_store'
 
 export default function Wrong() {
   return (
@@ -9,12 +9,17 @@ export default function Wrong() {
       <h3 class='text-2xl font-bold text-red-600'>Wrong Design</h3>
       <iframe
         id='wrongIframe'
-        class='border-none'
+        class='border-2'
         style={`height: ${challenge().height}px; width: ${challenge().width}px`}
         srcdoc={`<html>
     <head>
         <style>
             ${globalCss()}
+            ${
+              displayColor() === 'dark'
+                ? 'body{background: #666; color: white;}'
+                : 'body{background: white; color: black;}'
+            }
             ${challenge().generalCSS}
             ${css()}
         </style>

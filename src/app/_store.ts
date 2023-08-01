@@ -6,6 +6,9 @@ export const [theme, setTheme] = createSignal<'light' | 'dark'>('dark')
 export const [challenge, setChallenge] = createSignal<Challenge>(Challenges[0])
 export const [css, setCss] = createSignal('')
 export const [html, setHtml] = createSignal('')
+export const [displayColor, setDisplayColor] = createSignal<'light' | 'dark'>(
+  'light'
+)
 export const [globalCss, setGlobalCss] = createSignal(
   `
 /* Box sizing rules */
@@ -47,8 +50,6 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: 'Inter', sans-serif;
-  background: #666;
-  color: white;
   display: grid;
   place-items: center;
 }

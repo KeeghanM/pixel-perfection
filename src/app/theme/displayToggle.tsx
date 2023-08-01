@@ -1,19 +1,8 @@
-import { createEffect } from 'solid-js'
-import { theme, setTheme } from './_store'
+import { displayColor, setDisplayColor } from '../_store'
 
-export default function ThemeToggle() {
-  createEffect(() => {
-    const currentTheme = theme()
-    if (currentTheme === 'light') {
-      document.documentElement.classList.remove('dark')
-    } else {
-      document.documentElement.classList.add('dark')
-    }
-    window.localStorage.setItem('theme', currentTheme)
-  })
-
+export default function DisplayThemeToggle() {
   const toggleTheme = () => {
-    setTheme((oldTheme) => (oldTheme === 'light' ? 'dark' : 'light'))
+    setDisplayColor((oldTheme) => (oldTheme == 'dark' ? 'light' : 'dark'))
   }
 
   return (
@@ -22,7 +11,12 @@ export default function ThemeToggle() {
       class='flex h-fit items-center rounded-full bg-gray-200 p-0.5 text-black dark:bg-gray-400'
       onClick={toggleTheme}
     >
-      <div class='rounded-full bg-blue-500 p-2 dark:bg-transparent'>
+      <div
+        class={
+          'rounded-full p-2 ' +
+          (displayColor() === 'dark' ? 'bg-transparent' : 'bg-blue-500')
+        }
+      >
         <svg
           width='24px'
           xmlns='http://www.w3.org/2000/svg'
@@ -34,7 +28,12 @@ export default function ThemeToggle() {
           ></path>
         </svg>
       </div>
-      <div class='rounded-full bg-transparent p-2 dark:bg-blue-500'>
+      <div
+        class={
+          'rounded-full p-2 ' +
+          (displayColor() === 'light' ? 'bg-transparent' : 'bg-blue-500')
+        }
+      >
         <svg
           width='24px'
           xmlns='http://www.w3.org/2000/svg'

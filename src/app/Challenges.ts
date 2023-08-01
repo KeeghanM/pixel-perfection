@@ -17,7 +17,7 @@ export const Challenges: Challenge[] = [
     description:
       "Welcome to the tutorial! All you need to do is correct the below invalid CSS to make the 'wrong' design look like the 'correct' design.",
     width: 300,
-    height: 300,
+    height: 100,
     HTML: `<h1>
   <span>Hello,</span> world.
 </h1>`,
@@ -39,7 +39,7 @@ export const Challenges: Challenge[] = [
     description:
       "On something as simple as an input, details matter. Make the 'wrong' design look like the 'correct' design.",
     width: 500,
-    height: 300,
+    height: 130,
     HTML: `<div>
   <input type="text" placeholder="Enter your name here" />
   <button>Submit</button>
@@ -85,6 +85,105 @@ button {
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   border-radius: 0 5px 5px 0;
+}`,
+  },
+  {
+    id: 2,
+    name: 'Dealers choice',
+    description:
+      "Cards are a commonplace element in modern web design, but they're not always easy to get right. Make the 'wrong' design look like the 'correct' design.",
+    width: 400,
+    height: 400,
+    HTML: `<div>
+  <div class="card">
+    <div class="inner">
+      <h2>Card 1</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+        voluptatum, quibusdam, quia, quod voluptates voluptatem quos
+        voluptatibus quae doloribus quas natus. Quisquam voluptatum,
+      </p>
+      <button>Read More</button>
+    </div>
+  </div>`,
+    generalCSS: `body {
+      padding: 1rem;
+    }`,
+    correctCSS: `.card {  
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  background: rgb(80,30,155);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.card .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+.card .inner h2 {
+  font-size: 2rem;
+  color: rgb(80,30,155);
+}
+.card .inner p {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  color: black;
+}
+.card .inner button {
+  border: none;
+  background: rgb(80,30,155);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}`,
+    wrongCSS: `.card {  
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgb(80,30,155);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.card .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+.card .inner h2 {
+  font-size: 1.5rem;
+  color: rgb(80,30,155);
+}
+.card .inner p {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  color: black;
+}
+.card .inner button {
+  border: none;
+  background: rgb(80,30,155);
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
 }`,
   },
 ]

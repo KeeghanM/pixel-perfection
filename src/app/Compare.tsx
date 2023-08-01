@@ -15,18 +15,6 @@ export default function Compare() {
   const [loadingPercentage, setLoadingPercentage] = createSignal(0)
   const [sizeString, setSizeString] = createSignal('')
 
-  const calculateWeightedPercentage = (rawPercentage: number): number => {
-    if (rawPercentage >= 1) {
-      return 100
-    } else if (rawPercentage >= 0.98) {
-      return 60 + (rawPercentage - 0.98) * 2000 // linear function from (0.98, 60) to (1, 100)
-    } else if (rawPercentage >= 0.8) {
-      return 30 + (rawPercentage - 0.8) * 150 // linear function from (0.8, 30) to (0.98, 60)
-    } else {
-      return rawPercentage * 37.5 // linear function from (0, 0) to (0.8, 30)
-    }
-  }
-
   const calculateColor = (weightedPercentage: number): string => {
     let r, g
     if (weightedPercentage >= 80) {
@@ -120,8 +108,8 @@ export default function Compare() {
         }
       }
       let rawPercentage = match / (wrongPixelData.length / 4)
-      let weightedPercentage = calculateWeightedPercentage(rawPercentage)
-      setMatchPercentage(weightedPercentage)
+      setMatchPercentage(rawPercentage * 100)
+
       var id = setInterval(() => {
         if (loadingPercentage() >= 100) {
           clearInterval(id)
