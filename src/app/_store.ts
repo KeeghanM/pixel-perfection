@@ -2,7 +2,8 @@ import { createSignal } from 'solid-js'
 import { Challenge, Challenges } from './Challenges'
 
 export const [theme, setTheme] = createSignal<'light' | 'dark'>('dark')
-
+export const [compareAttmepts, setCompareAttempts] = createSignal(0)
+export const [currentXp, setCurrentXp] = createSignal<number>(0)
 export const [challenge, setChallenge] = createSignal<Challenge>(Challenges[0])
 export const [css, setCss] = createSignal('')
 export const [html, setHtml] = createSignal('')

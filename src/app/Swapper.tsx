@@ -1,6 +1,12 @@
 import { Challenges } from './Challenges'
 import { createSignal, createEffect } from 'solid-js'
-import { challenge, setChallenge, setCss, setHtml } from './_store'
+import {
+  challenge,
+  setChallenge,
+  setCompareAttempts,
+  setCss,
+  setHtml,
+} from './_store'
 
 export const Swapper = () => {
   const [currentChallenge, setCurrentChallenge] = createSignal(0)
@@ -9,6 +15,11 @@ export const Swapper = () => {
     setCss(Challenges[currentChallenge()].wrongCSS)
     setHtml(Challenges[currentChallenge()].HTML)
   })
+
+  const swap = (num: number) => {
+    setCurrentChallenge(currentChallenge() + num)
+    setCompareAttempts(0)
+  }
 
   return (
     <div class='mx-auto flex w-fit flex-col items-center justify-center text-center'>
@@ -20,7 +31,7 @@ export const Swapper = () => {
               ? 'cursor-default text-gray-500'
               : 'cursor-pointer text-blue-500 hover:text-blue-700'
           }
-          onClick={() => setCurrentChallenge(currentChallenge() - 1)}
+          onClick={() => swap(-1)}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -45,7 +56,7 @@ export const Swapper = () => {
               ? 'cursor-default text-gray-500'
               : 'cursor-pointer text-blue-500 hover:text-blue-700'
           }
-          onClick={() => setCurrentChallenge(currentChallenge() + 1)}
+          onClick={() => swap(1)}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

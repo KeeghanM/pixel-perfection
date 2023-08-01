@@ -1,6 +1,15 @@
 import * as htmlToImage from 'html-to-image'
 import { createSignal } from 'solid-js'
 import Confetti from './Confetti'
+import {
+  challenge,
+  compareAttmepts,
+  css,
+  currentXp,
+  html,
+  setCompareAttempts,
+  setCurrentXp,
+} from './_store'
 
 export default function Compare() {
   const [wrongImage, setWrongImage] = createSignal<string | undefined>(
@@ -14,6 +23,7 @@ export default function Compare() {
   const [modalShown, setModalShown] = createSignal(false)
   const [loadingPercentage, setLoadingPercentage] = createSignal(0)
   const [sizeString, setSizeString] = createSignal('')
+  const [xpGainString, setXpGainString] = createSignal('')
 
   const calculateColor = (weightedPercentage: number): string => {
     let r, g
@@ -65,6 +75,7 @@ export default function Compare() {
   }
 
   const runTest = async () => {
+    setCompareAttempts((old) => old + 1)
     setModalShown(true)
     setLoadingPercentage(0)
     setWrongImage(undefined)
@@ -144,11 +155,51 @@ export default function Compare() {
 
       var id = setInterval(() => {
         if (loadingPercentage() >= 100) {
+          if (rawPercentage === 1) setXp()
           clearInterval(id)
         }
         setLoadingPercentage((old) => old + 1)
       }, 10)
     }
+  }
+
+  const setXp = () => {
+    const completedChallenges = JSON.parse(
+      localStorage.getItem('completedChallenges') || '[]'
+    )
+    if (completedChallenges.includes(challenge().id)) {
+      setXpGainString(`Challenge already completed!<br />
+No XP gained.<br />
+Current total: ${currentXp()}XP`)
+      return
+    }
+
+    completedChallenges.push(challenge().id)
+    localStorage.setItem(
+      'completedChallenges',
+      JSON.stringify(completedChallenges)
+    )
+
+    const xpGain =
+      challenge().id == 0 ? 1000 : 1000 - (compareAttmepts() - 1) * 50
+    const clampedXp = Math.max(50, Math.min(1000, xpGain))
+    setCurrentXp((old) => old + clampedXp)
+
+    const totalXp = JSON.parse(localStorage.getItem('totalXp') || '0')
+    localStorage.setItem('totalXp', JSON.stringify(totalXp + clampedXp))
+
+    // set the xp gain string to show the calculation of xp gained
+    // so like 1000 - 50 per attempt * 3 attempts = 850XP
+    // +850XP
+    setXpGainString(
+      `${
+        challenge().id > 0
+          ? `1000XP<br>
+- 50 * ${compareAttmepts() - 1} comparisons<br>`
+          : ''
+      }= +${clampedXp}XP<br />
+      New total: ${currentXp()}XP`
+    )
   }
 
   return (
@@ -178,11 +229,15 @@ export default function Compare() {
               <span class='absolute left-0 right-0 top-2 mx-auto w-fit'>
                 Calculating...
               </span>
-              {loadingPercentage() >= 100 ? <Confetti /> : <></>}
+              {loadingPercentage() >= 100 && matchPercentage() === 100 ? (
+                <Confetti />
+              ) : (
+                <></>
+              )}
             </div>
           </>
         ) : (
-          <div class='mx-auto mt-4 flex w-fit flex-col justify-center'>
+          <div class='mx-auto mt-4 flex w-fit flex-col items-center justify-center'>
             <h3 class='mb-6 w-full text-center text-3xl font-bold'>
               Match Percentage:{' '}
               <span style={`color: ${calculateColor(matchPercentage())}`}>
@@ -221,6 +276,12 @@ export default function Compare() {
                 />
               </div>
             </div>
+            {xpGainString() !== '' ? (
+              <p
+                class='mt-2 text-center text-2xl font-bold'
+                innerHTML={xpGainString()}
+              />
+            ) : null}
             <button
               onclick={() => {
                 setModalShown(false)
@@ -233,7 +294,13 @@ export default function Compare() {
         )}
       </div>
       <button
-        class='mx-auto mt-2 h-fit w-fit cursor-pointer rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
+        disabled={css() == challenge().wrongCSS && html() == challenge().HTML}
+        class={
+          'mx-auto mt-2 h-fit w-fit cursor-pointer rounded px-4 py-2 font-bold text-white ' +
+          (css() != challenge().wrongCSS || html() != challenge().HTML
+            ? ' bg-blue-500 hover:bg-blue-700'
+            : ' cursor-not-allowed bg-gray-500')
+        }
         onClick={runTest}
       >
         Run Comparison

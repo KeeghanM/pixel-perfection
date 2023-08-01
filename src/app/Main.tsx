@@ -1,5 +1,5 @@
 import { onMount } from 'solid-js'
-import { challenge, setCss, setHtml } from './_store'
+import { challenge, currentXp, setCss, setCurrentXp, setHtml } from './_store'
 import Editors from './editors/Editors'
 import Correct from './displays/Correct'
 import Wrong from './displays/Wrong'
@@ -12,25 +12,31 @@ export default function Main() {
   onMount(() => {
     setHtml(challenge().HTML)
     setCss(challenge().wrongCSS)
+    setCurrentXp(JSON.parse(localStorage.getItem('totalXp') || '0'))
   })
 
   return (
     <>
-      <div class='fixed left-0 top-0 p-2 md:p-4 lg:p-6'>
-        <a
-          class='rounded-full bg-red-300 px-4 py-2 font-bold text-gray-800 hover:bg-red-400'
-          href='/'
-        >
-          Exit
-        </a>
-      </div>
-      <div class='fixed right-0 top-0 flex p-2 md:p-4 lg:p-6'>
-        <MainThemeToggle />
-      </div>
       <div class='h-screen max-h-screen'>
-        <div class='w-full bg-gray-300 py-4 text-center dark:bg-gray-900'>
-          <Swapper />
-          <Compare />
+        <div class='flex w-full bg-gray-300 dark:bg-gray-900'>
+          <div class='flex flex-1 flex-col items-center py-2'>
+            <div class='max-w-screen-md'>
+              <Swapper />
+            </div>
+            <Compare />
+          </div>
+          <div class='flex flex-col gap-2 p-2'>
+            <div class='ml-auto flex w-fit flex-col items-end gap-2'>
+              <a
+                class='rounded-full bg-red-300 px-4 py-2 text-center font-bold text-gray-800 hover:bg-red-400'
+                href='/'
+              >
+                Exit
+              </a>
+              <MainThemeToggle />
+            </div>
+            <p class='ml-auto text-right text-3xl font-bold'>{currentXp()}XP</p>
+          </div>
         </div>
         <div class='grid grid-cols-[minmax(30vw,_450px)_1fr] px-6 py-12'>
           <div class='flex h-full flex-col'>
