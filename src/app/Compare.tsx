@@ -98,16 +98,48 @@ export default function Compare() {
 
     if (wrongPixelData && correctPixelData) {
       let match = 0
+      let skipped = 0
       for (let i = 0; i < wrongPixelData.length; i += 4) {
-        let rDiff = Math.abs(wrongPixelData[i] - correctPixelData[i])
-        let gDiff = Math.abs(wrongPixelData[i + 1] - correctPixelData[i + 1])
-        let bDiff = Math.abs(wrongPixelData[i + 2] - correctPixelData[i + 2])
+        const wrongRed = wrongPixelData[i]
+        const wrongGreen = wrongPixelData[i + 1]
+        const wrongBlue = wrongPixelData[i + 2]
+        const wrongAlpha = wrongPixelData[i + 3]
+        const correctRed = correctPixelData[i]
+        const correctGreen = correctPixelData[i + 1]
+        const correctBlue = correctPixelData[i + 2]
+        const correctAlpha = correctPixelData[i + 3]
 
-        if ((rDiff + gDiff + bDiff) / 3 == 0) {
+        // Ignore the default background when calculating match percentage
+        // we have set the bg to be 101,101,101 for dark mode and 254,254,254 for light mode
+        // which is close to white and dark gray respectively but not exactly the same
+        if (
+          (wrongRed == 254 &&
+            wrongGreen == 254 &&
+            wrongBlue == 254 &&
+            correctRed == 255 &&
+            correctGreen == 255 &&
+            correctBlue == 255) ||
+          (wrongRed == 101 &&
+            wrongGreen == 101 &&
+            wrongBlue == 101 &&
+            correctRed == 101 &&
+            correctGreen == 101 &&
+            correctBlue == 101)
+        ) {
+          skipped++
+          continue
+        }
+
+        const rDiff = Math.abs(wrongRed - correctRed)
+        const gDiff = Math.abs(wrongGreen - correctGreen)
+        const bDiff = Math.abs(wrongBlue - correctBlue)
+        const aDiff = Math.abs(wrongAlpha - correctAlpha)
+
+        if ((rDiff + gDiff + bDiff + aDiff) / 4 == 0) {
           match++
         }
       }
-      let rawPercentage = match / (wrongPixelData.length / 4)
+      const rawPercentage = match / ((wrongPixelData.length - skipped * 4) / 4)
       setMatchPercentage(rawPercentage * 100)
 
       var id = setInterval(() => {

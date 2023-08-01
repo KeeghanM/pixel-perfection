@@ -17,8 +17,8 @@ export default function Wrong() {
             ${globalCss()}
             ${
               displayColor() === 'dark'
-                ? 'body{background: #666; color: white;}'
-                : 'body{background: white; color: black;}'
+                ? 'body{background: rgb(101,101,101); color: white;}'
+                : 'body{background: rgb(254,254,254); color: black;}'
             }
             ${challenge().generalCSS}
             ${css()}
