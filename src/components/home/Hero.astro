@@ -1,5 +1,5 @@
 ---
-const one = 1
+
 ---
 
 <div
@@ -20,6 +20,19 @@ const one = 1
         >PixelPerfection</span
       ><span id='tag'>Can you spot the difference?</span>
     </h1>
+    <svg
+      class='rotate-180 animate-pulse pointer-events-auto cursor-pointer hover:animate-none hover:text-blue-500 transition-colors duration-300 ease-in-out'
+      onclick="window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })"
+      id='chevron-down'
+      xmlns='http://www.w3.org/2000/svg'
+      width='128'
+      height='128'
+      viewBox='0 0 24 24'
+      ><path
+        fill='currentColor'
+        d='M7 16H5v-2h2v-2h2v-2h2V8h2v2h2v2h2v2h2v2h-2v-2h-2v-2h-2v-2h-2v2H9v2H7v2z'
+      ></path></svg
+    >
   </div>
 </div>
 
@@ -61,6 +74,10 @@ const one = 1
     'span#tag'
   ) as HTMLSpanElement
 
+  const chevronDown = document.getElementById(
+    'chevron-down'
+  ) as HTMLOrSVGElement
+
   const handleScroll = () => {
     if (!hero || !heroTitle || !heroTitleSpan || !heroContainer) return
 
@@ -83,6 +100,7 @@ const one = 1
       heroContainer.classList.add('sticky', 'top-0', 'z-10')
       heroContainer.classList.remove('items-center', 'justify-center')
       heroTitleTagline?.classList.add('hidden')
+      chevronDown?.classList.add('hidden')
     } else {
       if (heroTitle.style.flexDirection === 'column') return
 
@@ -92,6 +110,7 @@ const one = 1
       heroContainer.classList.remove('sticky', 'top-0', 'z-10')
       heroContainer.classList.add('items-center', 'justify-center')
       heroTitleTagline?.classList.remove('hidden')
+      chevronDown?.classList.remove('hidden')
     }
   }
 
