@@ -3,6 +3,7 @@ import { createSignal } from 'solid-js'
 import Confetti from './Confetti'
 import {
   challenge,
+  setChallenge,
   compareAttmepts,
   css,
   currentXp,
@@ -82,6 +83,7 @@ export default function Compare() {
     setCorrectImage(undefined)
     setMatchPercentage(0)
     setOpacity(0.5)
+    setXpGainString('')
 
     const wrongIframe = document.getElementById(
       'wrongIframe'
@@ -202,12 +204,14 @@ Current total: ${currentXp()}XP`)
     )
   }
 
+  const closeModal = () => {
+    setModalShown(false)
+  }
+
   return (
     <>
       <div
-        onclick={() => {
-          setModalShown(false)
-        }}
+        onclick={closeModal}
         class={
           'fixed inset-0 bg-[rgba(0,0,0,0.8)]' +
           (modalShown() ? ' z-10' : ' hidden')
@@ -283,9 +287,7 @@ Current total: ${currentXp()}XP`)
               />
             ) : null}
             <button
-              onclick={() => {
-                setModalShown(false)
-              }}
+              onclick={closeModal}
               class='mt-2 w-fit cursor-pointer rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700'
             >
               Close
