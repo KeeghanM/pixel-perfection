@@ -38,7 +38,7 @@
     &-bar {
       height: 2.5rem;
       border-radius: 9999px;
-      background: var(--accent-primary);
+      background: var(--accent);
     }
 
     &-text {
@@ -133,7 +133,6 @@
   }
 
   &__run-button {
-    margin: 0.5rem auto 0;
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 8px;
@@ -147,7 +146,7 @@
 
     &--enabled {
       cursor: pointer;
-      background: linear-gradient(135deg, var(--accent-primary), #1d4ed8);
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
 
       &:hover {
         transform: translateY(-1px);

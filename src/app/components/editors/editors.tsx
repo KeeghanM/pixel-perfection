@@ -1,7 +1,7 @@
 import { css, html, setCss, setHtml } from '../../_store'
 import { html as HTMLLang } from '@codemirror/lang-html'
 import { css as CSSLang } from '@codemirror/lang-css'
-import Editor from '../editor/editor'
+import Editor from './editor/editor'
 import './editors.scss'
 
 export default function Editors() {

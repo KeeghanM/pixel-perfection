@@ -1,5 +1,5 @@
 import { onMount, createEffect } from 'solid-js'
-import { challenge } from '../../_store'
+import { challenge } from '../../../_store'
 import { debounce } from '@solid-primitives/scheduled'
 import { EditorView, basicSetup } from 'codemirror'
 import { EditorState, StateField, StateEffect } from '@codemirror/state'

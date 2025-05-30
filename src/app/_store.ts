@@ -74,5 +74,12 @@ textarea,
 select {
   font: inherit;
 }
+
+body {
+  background-color: rgb(254, 254, 254);
+  }
+body.dark {
+  background-color: rgb(30, 30, 30);
+}
 `
 )
