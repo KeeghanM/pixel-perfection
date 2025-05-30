@@ -1,0 +1,11 @@
+.wrong-display {
+  @apply flex flex-col items-center;
+
+  &__title {
+    @apply text-2xl font-bold text-red-600;
+  }
+
+  &__iframe {
+    @apply border-2;
+  }
+}
