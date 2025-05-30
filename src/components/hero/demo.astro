@@ -67,6 +67,7 @@
 
 <style lang='scss'>
   .hero-demo {
+    display: none;
     position: absolute;
     right: 2rem;
     top: 50%;
@@ -152,6 +153,12 @@
   @keyframes typeIn {
     to {
       opacity: 1;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .hero-demo {
+      display: block;
     }
   }
 </style>
