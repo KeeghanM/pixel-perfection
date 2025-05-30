@@ -1,19 +1,20 @@
 .editors {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
 
   &__section {
-    flex: 1;
     height: 50%;
+    box-sizing: border-box;
   }
 
   &__title {
-    padding-inline: 1rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     color: var(--text-primary);
     margin: 0;
     background-color: var(--secondary);
+    height: 2.5rem;
+    line-height: 1.5rem;
+    box-sizing: border-box;
   }
 }

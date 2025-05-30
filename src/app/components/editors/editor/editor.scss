@@ -1,5 +1,5 @@
 .editor {
-  height: 100%;
+  height: calc(100% - 2.5rem); /* Full height minus title height (2.5rem) */
   width: 100%;
   background-color: #282c34;
   overflow-y: auto;
