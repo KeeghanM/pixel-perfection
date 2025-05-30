@@ -1,0 +1,127 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+// --- Styles ---
+.btn-outline {
+  background: transparent;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+}
+
+// --- Themes ---
+
+// Primary
+.btn-primary.btn-solid {
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  color: #fff;
+  border: none;
+}
+.btn-primary.btn-outline {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.btn-primary.btn-ghost {
+  color: var(--accent);
+}
+
+// Secondary
+.btn-secondary.btn-solid {
+  background: var(--bg-secondary);
+  color: #fff;
+  border: none;
+}
+.btn-secondary.btn-outline {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+.btn-secondary.btn-ghost {
+  color: var(--secondary);
+}
+
+// Danger
+.btn-danger.btn-solid {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+}
+.btn-danger.btn-outline {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn-danger.btn-ghost {
+  color: var(--danger);
+}
+
+// Success
+.btn-success.btn-solid {
+  background: var(--success);
+  color: #fff;
+  border: none;
+}
+.btn-success.btn-outline {
+  color: var(--success);
+  border-color: var(--success);
+}
+.btn-success.btn-ghost {
+  color: var(--success);
+}
+
+// Warning
+.btn-warning.btn-solid {
+  background: var(--warning);
+  color: #fff;
+  border: none;
+}
+.btn-warning.btn-outline {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+.btn-warning.btn-ghost {
+  color: var(--warning);
+}
+
+// --- Sizes ---
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+}
+
+// --- Hover States ---
+.btn:hover,
+.btn:focus {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.btn:active {
+  filter: brightness(0.95);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}

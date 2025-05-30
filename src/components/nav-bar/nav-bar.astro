@@ -1,0 +1,123 @@
+---
+import Button from '../ui/button/button'
+---
+
+<nav class='nav'>
+  <div class='nav-container'>
+    <div class='logo'>PixelPerfection</div>
+    <ul class='nav-links'>
+      <li>
+        <a
+          href='#features'
+          class='nav-link'
+          >Features</a
+        >
+      </li>
+      <li>
+        <a
+          href='#how-it-works'
+          class='nav-link'
+          >How it Works</a
+        >
+      </li>
+      <li>
+        <a
+          href='#challenges'
+          class='nav-link'
+          >Challenges</a
+        >
+      </li>
+      <li>
+        <a
+          href='#pricing'
+          class='nav-link'
+          >Pricing</a
+        >
+      </li>
+    </ul>
+    <div class='nav-actions'>
+      <Button
+        theme='primary'
+        style='ghost'
+        type='link'
+        href='#'
+        label='Sign In'
+      />
+      <Button
+        theme='primary'
+        style='solid'
+        type='link'
+        href='#'
+        label='Get Started'
+      />
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(
+      135deg,
+      var(--accent-primary),
+      var(--accent-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

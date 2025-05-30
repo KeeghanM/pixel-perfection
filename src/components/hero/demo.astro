@@ -1,0 +1,157 @@
+---
+
+---
+
+<div class='hero-demo'>
+  <div class='demo-header'>
+    <div class='demo-dot red'></div>
+    <div class='demo-dot yellow'></div>
+    <div class='demo-dot green'></div>
+  </div>
+  <div class='demo-content'>
+    <div class='demo-line'>
+      <span class='prop'>.hero-grid</span>
+      <span class='brace'>&#123;</span>
+    </div>
+    <div class='demo-line inset'>
+      <span class='prop'>position</span>: <span class='value-text'
+        >absolute</span
+      >;
+    </div>
+    <div class='demo-line inset'>
+      <span class='prop'>inset</span>: <span class='value-number'>0</span>;
+    </div>
+    <div class='demo-line inset'>
+      <span class='prop'>background-image</span>:
+      <span class='function'>linear-gradient</span><span class='paren'>(</span>
+      <span class='function'>rgba</span><span class='paren'>(</span>
+      <span class='value-number'>255</span>,
+      <span class='value-number'>255</span>,
+      <span class='value-number'>255</span>,
+      <span class='value-number'>0.02</span>
+      <span class='paren'>)</span>
+      <span class='value-number'>1px</span>,
+      <span class='value-text'>transparent</span>
+      <span class='value-number'>1px</span>
+      <span class='paren'>)</span>,
+      <br />
+      <span class='function'>linear-gradient</span><span class='paren'>(</span>
+      <span class='value-number'>90deg</span>,
+      <span class='function'>rgba</span><span class='paren'>(</span>
+      <span class='value-number'>255</span>,
+      <span class='value-number'>255</span>,
+      <span class='value-number'>255</span>,
+      <span class='value-number'>0.02</span>
+      <span class='paren'>)</span>
+      <span class='value-number'>1px</span>,
+      <span class='value-text'>transparent</span>
+      <span class='value-number'>1px</span>
+      <span class='paren'>)</span>;
+    </div>
+    <div class='demo-line inset'>
+      <span class='prop'>background-size</span>: <span class='value-number'
+        >50px</span
+      >
+      <span class='value-number'>50px</span>;
+    </div>
+    <div class='demo-line inset'>
+      <span class='prop'>pointer-events</span>: <span class='value-text'
+        >none</span
+      >;
+    </div>
+    <div class='demo-line'>
+      <span class='brace'>&#125;</span>
+    </div>
+  </div>
+</div>
+
+<style lang='scss'>
+  .hero-demo {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 300px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .demo-header {
+    background: var(--bg-tertiary);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .demo-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-secondary);
+  }
+
+  .demo-dot.red {
+    background: #ef4444;
+  }
+  .demo-dot.yellow {
+    background: #f59e0b;
+  }
+  .demo-dot.green {
+    background: #10b981;
+  }
+
+  .demo-content {
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .demo-line {
+    opacity: 0;
+    animation: typeIn 0.5s ease forwards;
+  }
+  .inset {
+    margin-left: 1.5rem;
+    position: relative;
+  }
+  .elem {
+    color: #f6c177;
+  }
+  .prop {
+    color: #569cd6;
+  }
+  .value-text {
+    color: #b9643c;
+  }
+  .value-number {
+    color: #67ac78;
+  }
+  .brace {
+    color: #ddb23d;
+  }
+  .function {
+    color: #ddb23d;
+  }
+  .paren {
+    color: #ff79c6;
+  }
+
+  @for $i from 1 through 15 {
+    .demo-line:nth-child(#{$i}) {
+      animation-delay: #{0.5 * $i}s;
+    }
+  }
+
+  @keyframes typeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>

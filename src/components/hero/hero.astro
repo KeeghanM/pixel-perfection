@@ -1,0 +1,141 @@
+---
+import Button from '../ui/button/button'
+import Demo from './demo.astro'
+---
+
+<section class='hero'>
+  <div class='hero-bg'></div>
+  <div class='hero-grid'></div>
+  <div class='hero-container'>
+    <div class='hero-content'>
+      <div class='hero-badge'>
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <circle
+            cx='12'
+            cy='12'
+            r='10'
+          ></circle>
+          <path d='m9 12 2 2 4-4'></path>
+        </svg>
+         Now in Public Beta
+      </div>
+      <h1 class='hero-title'>
+        Master Code with <br /><span
+          style='background: linear-gradient(135deg, var(--accent), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'
+          >Pixel Precision</span
+        >
+      </h1>
+      <p class='hero-subtitle'>
+        The ultimate challenge for detail-oriented developers. Spot differences,
+        correct code, and achieve pixel-perfect results through interactive
+        coding challenges.
+      </p>
+      <div class='hero-cta'>
+        <Button
+          theme='primary'
+          style='solid'
+          type='link'
+          href='#'
+          label='Start Your First Challenge'
+          size='large'
+        />
+        <Button
+          theme='secondary'
+          style='outline'
+          type='link'
+          href='#'
+          label='View Demo'
+          size='large'
+        />
+      </div>
+    </div>
+  </div>
+  <Demo />
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 212, 255, 0.1) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--accent-primary);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

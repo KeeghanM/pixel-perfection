@@ -10,24 +10,23 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^2.2.0",
-    "@astrojs/tailwind": "^4.0.0",
-    "@astrojs/vercel": "^3.7.4",
+    "@astrojs/node": "^9.2.2",
+    "@astrojs/solid-js": "^5.1.0",
     "@codemirror/lang-css": "^6.2.0",
     "@codemirror/lang-html": "^6.4.5",
     "@codemirror/state": "^6.2.1",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@solid-primitives/scheduled": "^1.4.0",
-    "astro": "^2.9.4",
+    "astro": "^5.8.1",
+    "astro-compress": "^2.3.8",
     "cm6-theme-solarized-light": "^0.2.0",
     "codemirror": "^6.0.1",
-    "flowbite": "^1.7.0",
     "html-to-image": "^1.11.11",
-    "solid-js": "^1.7.8",
-    "tailwindcss": "^3.3.3"
+    "sass": "^1.89.0",
+    "solid-js": "^1.9.7"
   },
   "devDependencies": {
-    "prettier-plugin-astro": "^0.11.0",
-    "prettier-plugin-tailwindcss": "^0.4.1"
-  }
+    "prettier-plugin-astro": "^0.11.0"
+  },
+  "packageManager": "yarn@4.9.1"
 }

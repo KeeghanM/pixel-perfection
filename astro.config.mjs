@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config'
-import vercel from '@astrojs/vercel/serverless'
 import solidJs from '@astrojs/solid-js'
-import tailwind from '@astrojs/tailwind'
+import node from '@astrojs/node'
+import compress from 'astro-compress'
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercel(),
-  integrations: [solidJs(), tailwind()],
+  output: 'static',
+  integrations: [solidJs(), compress()],
+  adapter: node({
+    mode: 'standalone',
+  }),
 })
