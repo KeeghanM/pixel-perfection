@@ -1,0 +1,272 @@
+---
+import FancyText from '../ui/fancy-text/fancy-text.astro'
+---
+
+<section
+  class='timeline-section'
+  id='how-it-works'
+>
+  <div class='section-container'>
+    <div class='section-header fade-in'>
+      <h2 class='section-title'>
+        How <FancyText text='PixelPerfection' />
+         Works
+      </h2>
+      <p class='section-subtitle'>
+        A systematic approach to mastering frontend precision through hands-on
+        challenges
+      </p>
+    </div>
+    <div class='timeline'>
+      <div class='timeline-line'></div>
+
+      <div class='timeline-item fade-in'>
+        <div class='timeline-number'>1</div>
+        <div class='timeline-content'>
+          <h3 class='timeline-title'>Choose Your Challenge</h3>
+          <p class='timeline-description'>
+            Select from a curated collection of challenges ranging from basic
+            HTML/CSS to advanced React components. Each challenge is designed to
+            test specific skills and help you develop a keen eye for detail.
+          </p>
+        </div>
+      </div>
+
+      <div class='timeline-item fade-in'>
+        <div class='timeline-number'>2</div>
+        <div class='timeline-content'>
+          <h3 class='timeline-title'>Spot the Differences</h3>
+          <p class='timeline-description'>
+            Use your detective skills to identify inconsistencies between the
+            target design and current implementation. Is it a color that's off?
+            Maybe the spacing isn't quite right? Every pixel matters.
+          </p>
+        </div>
+      </div>
+
+      <div class='timeline-item fade-in'>
+        <div class='timeline-number'>3</div>
+        <div class='timeline-content'>
+          <h3 class='timeline-title'>Code the Solution</h3>
+          <p class='timeline-description'>
+            Dive into our professional code editor and fix the issues in
+            real-time. Watch as your changes instantly update the preview,
+            bringing you closer to pixel perfection with every keystroke.
+          </p>
+        </div>
+      </div>
+
+      <div class='timeline-item fade-in'>
+        <div class='timeline-number'>4</div>
+        <div class='timeline-content'>
+          <h3 class='timeline-title'>Achieve Perfection</h3>
+          <p class='timeline-description'>
+            Use our advanced comparison tools to validate your solution. Get
+            instant feedback and achieve that satisfying moment when your design
+            perfectly matches the target.
+          </p>
+        </div>
+      </div>
+
+      <div class='timeline-item fade-in'>
+        <div class='timeline-number'>5</div>
+        <div class='timeline-content'>
+          <h3 class='timeline-title'>Level Up & Compete</h3>
+          <p class='timeline-description'>
+            Earn XP, climb the leaderboard, and unlock new challenges. Track
+            your progress and compete with developers worldwide to become a
+            PixelPerfection champion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang='scss'>
+  .timeline-section {
+    padding: 8rem 0;
+    position: relative;
+  }
+
+  .section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  // Mobile-first: Line and numbers on the left
+  .timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--secondary));
+  }
+
+  .timeline-item {
+    --number-size: 60px;
+
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 50px;
+    padding-right: 1rem;
+    display: block;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .timeline-number {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: var(--number-size);
+    height: var(--number-size);
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+    border: 2px solid var(--accent);
+    z-index: 10;
+  }
+
+  .timeline-content {
+    padding: 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    position: relative;
+  }
+
+  .timeline-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .timeline-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  // Desktop: Center line with alternating cards
+  @media (min-width: 768px) {
+    .timeline {
+      max-width: 900px;
+    }
+
+    .timeline-line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+      min-height: 120px;
+
+      // Odd items (1, 3, 5) - content on the left
+      &:nth-child(odd) {
+        justify-content: flex-start;
+
+        .timeline-content {
+          margin-right: 80px;
+          margin-left: 0;
+        }
+      }
+
+      // Even items (2, 4) - content on the right
+      &:nth-child(even) {
+        justify-content: flex-end;
+
+        .timeline-content {
+          margin-left: 80px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .timeline-content {
+      width: calc(40% - 40px);
+      max-width: 400px;
+    }
+
+    .timeline-number {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+  }
+
+  // Large screens: More breathing room
+  @media (min-width: 1024px) {
+    .timeline {
+      max-width: 1000px;
+    }
+
+    .timeline-item {
+      &:nth-child(odd) .timeline-content {
+        margin-right: 100px;
+      }
+
+      &:nth-child(even) .timeline-content {
+        margin-left: 100px;
+      }
+    }
+
+    .timeline-content {
+      width: calc(40% - 50px);
+      max-width: 450px;
+    }
+  }
+
+  // Animation support
+  //   .fade-in {
+  //     opacity: 0;
+  //     transform: translateY(30px);
+  //     transition: all 0.6s ease;
+
+  //     &.visible {
+  //       opacity: 1;
+  //       transform: translateY(0);
+  //     }
+  //   }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/button/button'
+import FancyText from '../ui/fancy-text/fancy-text.astro'
 import Demo from './demo.astro'
 ---
 
@@ -27,10 +28,7 @@ import Demo from './demo.astro'
          Now in Public Beta
       </div>
       <h1 class='hero-title'>
-        Master Code with <br /><span
-          style='background: linear-gradient(135deg, var(--accent), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'
-          >Pixel Precision</span
-        >
+        Master Code with <br /><FancyText text='Pixel Perfection' />
       </h1>
       <p class='hero-subtitle'>
         The ultimate challenge for detail-oriented developers. Spot differences,
@@ -50,7 +48,7 @@ import Demo from './demo.astro'
           theme='secondary'
           style='outline'
           type='link'
-          href='#'
+          href='#how-it-works'
           label='Learn More'
           size='large'
         />
