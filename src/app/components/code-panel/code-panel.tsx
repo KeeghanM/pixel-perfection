@@ -3,10 +3,10 @@ import Editor from '../editor/editor'
 import { html as HTMLLang } from '@codemirror/lang-html'
 import { css as CSSLang } from '@codemirror/lang-css'
 import { css, html, setCss, setHtml } from '../../_store'
-import type { CodePanelProps } from './TCodePanel'
+import type { TCodePanel } from './TCodePanel'
 import './code-panel.scss'
 
-export default function CodePanel(props: CodePanelProps) {
+export default function CodePanel(props: TCodePanel) {
   return (
     <div class='code-panel'>
       <div class='code-panel__header'>

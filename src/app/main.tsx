@@ -1,7 +1,6 @@
 import { onMount, createSignal } from 'solid-js'
 import {
   challenge,
-  currentXp,
   setCss,
   setCurrentXp,
   setHtml,
@@ -10,7 +9,6 @@ import {
 } from './_store'
 import { Challenges } from './Challenges'
 import AppBar from './components/app-bar/app-bar'
-import NavigationControls from './components/navigation-controls/navigation-controls'
 import CodePanel from './components/code-panel/code-panel'
 import DesignPanel from './components/design-panel/design-panel'
 
@@ -50,12 +48,6 @@ export default function Main() {
     }
   }
 
-  const exitChallenge = () => {
-    if (confirm('Exit challenge? Your progress will be saved.')) {
-      window.location.href = '/'
-    }
-  }
-
   return (
     <div
       style="
@@ -83,13 +75,10 @@ export default function Main() {
       letter-spacing: -0.01em;
     "
     >
-      <AppBar />
-
-      <NavigationControls
+      <AppBar
         currentChallenge={currentChallenge}
         onPreviousChallenge={previousChallenge}
         onNextChallenge={nextChallenge}
-        onExitChallenge={exitChallenge}
       />
 
       {/* Main Container */}

@@ -38,7 +38,7 @@ import Demo from './demo.astro'
       <div class='hero-cta'>
         <Button
           theme='primary'
-          style='solid'
+          variant='solid'
           type='link'
           href='/app'
           label='Start Your First Challenge'
@@ -46,7 +46,7 @@ import Demo from './demo.astro'
         />
         <Button
           theme='secondary'
-          style='outline'
+          variant='outline'
           type='link'
           href='#how-it-works'
           label='Learn More'
@@ -81,10 +81,8 @@ import Demo from './demo.astro'
   .hero-grid {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.02) 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;

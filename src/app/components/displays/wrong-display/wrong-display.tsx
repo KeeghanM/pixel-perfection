@@ -1,4 +1,4 @@
-import { challenge, css, html, globalCss, displayColor } from '../../_store'
+import { challenge, css, html, globalCss, displayColor } from '../../../_store'
 import './wrong-display.scss'
 
 export default function WrongDisplay() {

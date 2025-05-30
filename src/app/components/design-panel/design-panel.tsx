@@ -1,5 +1,5 @@
-import Correct from '../correct-display/correct-display'
-import Wrong from '../wrong-display/wrong-display'
+import Correct from '../displays/correct-display/correct-display'
+import Wrong from '../displays/wrong-display/wrong-display'
 import Compare from '../compare/compare'
 import { displayColor, setDisplayColor } from '../../_store'
 import './design-panel.scss'

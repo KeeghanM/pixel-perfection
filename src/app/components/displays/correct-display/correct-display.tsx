@@ -1,4 +1,4 @@
-import { challenge, displayColor, globalCss } from '../../_store'
+import { challenge, displayColor, globalCss } from '../../../_store'
 import './correct-display.scss'
 
 export default function CorrectDisplay() {

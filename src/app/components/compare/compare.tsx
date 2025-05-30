@@ -71,7 +71,6 @@ export default function Compare() {
   }
 
   const runTest = async () => {
-    // ...existing logic...
     setCompareAttempts((old) => old + 1)
     setModalShown(true)
     setLoadingPercentage(0)
@@ -159,7 +158,6 @@ export default function Compare() {
   }
 
   const setXp = () => {
-    // ...existing XP logic...
     const completedChallenges = JSON.parse(
       localStorage.getItem('completedChallenges') || '[]'
     )

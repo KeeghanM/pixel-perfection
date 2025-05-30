@@ -1,10 +1,9 @@
 type Base = {
   theme: 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
-  style: 'solid' | 'outline' | 'ghost'
+  variant: 'solid' | 'outline' | 'ghost'
   size?: 'small' | 'default' | 'large'
-  label: string
   classes?: string
-}
+} & ({ label: string; children?: never } | { label?: never; children: any })
 
 type ButtonProps = Base & {
   type: 'button' | 'submit' | 'reset'

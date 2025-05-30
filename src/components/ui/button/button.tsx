@@ -2,32 +2,23 @@ import type { TButton } from './TButton'
 import './button.scss'
 
 export default function Button(props: TButton) {
-  const {
-    type,
-    theme = 'primary',
-    style = 'solid',
-    label,
-    classes = '',
-    size = 'default',
-  } = props
-
-  return type === 'link' ? (
+  return props.type === 'link' ? (
     <a
       href={props.href}
       target={props.target ?? '_self'}
       rel={props.rel}
-      class={`btn btn-${theme} btn-${style} btn-${size} ${classes}`}
+      class={`btn btn-${props.theme || 'primary'} btn-${props.variant || 'solid'} btn-${props.size || 'default'} ${props.classes || ''}`}
     >
-      {label}
+      {props.label || props.children}
     </a>
   ) : (
     <button
-      type={type}
+      type={props.type}
       onClick={props.onClick}
       disabled={props.disabled}
-      class={`btn btn-${theme} btn-${style} btn-${size} ${classes}`}
+      class={`btn btn-${props.theme || 'primary'} btn-${props.variant || 'solid'} btn-${props.size || 'default'} ${props.classes || ''}`}
     >
-      {label}
+      {props.label || props.children}
     </button>
   )
 }

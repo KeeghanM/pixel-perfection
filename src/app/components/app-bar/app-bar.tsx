@@ -1,29 +1,79 @@
 import { challenge, currentXp } from '../../_store'
+import { Challenges } from '../../Challenges'
+import type { TAppBar } from './TAppBar'
 import './app-bar.scss'
+import Button from '../../../components/ui/button/button'
 
-export default function AppBar() {
+export default function AppBar({
+  currentChallenge,
+  onPreviousChallenge,
+  onNextChallenge,
+}: TAppBar) {
   return (
     <div class='app-bar'>
       <div class='app-bar__left-section'>
         <div class='app-bar__logo'>PixelPerfection</div>
-        <nav class='app-bar__nav'>
-          <div class='app-bar__nav-item'>
-            <span>Challenges</span>
-          </div>
-          <div class='app-bar__nav-dot'></div>
-          <div class='app-bar__nav-item'>
-            <div class='app-bar__challenge-badge'>
-              {challenge().id === 0
-                ? 'Tutorial'
-                : `Challenge ${challenge().id}`}
-            </div>
-          </div>
-          <div class='app-bar__nav-dot'></div>
-          <div class='app-bar__nav-item'>
-            <span>{challenge().name}</span>
-          </div>
-        </nav>
       </div>
+
+      <div class='app-bar__center-section'>
+        <Button
+          type='button'
+          theme='primary'
+          variant={currentChallenge() === 0 ? 'ghost' : 'outline'}
+          size='small'
+          disabled={currentChallenge() === 0}
+          onClick={onPreviousChallenge}
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='20'
+            viewBox='0 0 16 9'
+          >
+            <path
+              fill='currentColor'
+              d='M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5Z'
+            />
+            <path
+              fill='currentColor'
+              d='M6 8.5a.47.47 0 0 1-.35-.15l-3.5-3.5c-.2-.2-.2-.51 0-.71L5.65.65c.2-.2.51-.2.71 0c.2.2.2.51 0 .71L3.21 4.51l3.15 3.15c.2.2.2.51 0 .71c-.1.1-.23.15-.35.15Z'
+            />
+          </svg>
+        </Button>
+
+        <div class='app-bar__challenge-info'>
+          <h1 class='app-bar__challenge-title'>{challenge().name}</h1>
+          <p class='app-bar__challenge-description'>
+            {challenge().description}
+          </p>
+        </div>
+
+        <Button
+          type='button'
+          theme='primary'
+          size='small'
+          variant={
+            currentChallenge() === Challenges.length - 1 ? 'ghost' : 'outline'
+          }
+          disabled={currentChallenge() === Challenges.length - 1}
+          onClick={onNextChallenge}
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='24'
+            viewBox='0 0 16 9'
+          >
+            <path
+              fill='currentColor'
+              d='M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5Z'
+            />
+            <path
+              fill='currentColor'
+              d='M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71c.2-.2.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z'
+            />
+          </svg>
+        </Button>
+      </div>
+
       <div class='app-bar__right-section'>
         <div class='app-bar__xp-container'>
           <svg
