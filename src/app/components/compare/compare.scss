@@ -38,7 +38,7 @@
     &-bar {
       height: 2.5rem;
       border-radius: 9999px;
-      background: var(--accent);
+      background: var(--primary);
     }
 
     &-text {
@@ -146,7 +146,7 @@
 
     &--enabled {
       cursor: pointer;
-      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      background: linear-gradient(135deg, var(--primary), #1d4ed8);
 
       &:hover {
         transform: translateY(-1px);

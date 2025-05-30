@@ -27,16 +27,16 @@
 
 // Primary
 .btn-primary.btn-solid {
-  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fff;
   border: none;
 }
 .btn-primary.btn-outline {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 .btn-primary.btn-ghost {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 // Secondary

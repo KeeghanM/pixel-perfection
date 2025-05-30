@@ -6,12 +6,16 @@ import {
   setHtml,
   setChallenge,
   setCompareAttempts,
+  setDisplayColor,
+  displayColor,
 } from './_store'
 import { Challenges } from './Challenges'
 import AppBar from './components/app-bar/app-bar'
 import DesignPanel from './components/design-panel/design-panel'
 import './app.scss'
 import Editors from './components/editors/editors'
+import Compare from './components/compare/compare'
+import ControlBar from './components/control-bar/control-bar'
 
 export default function App() {
   const [currentChallenge, setCurrentChallenge] = createSignal(0)
@@ -51,7 +55,7 @@ export default function App() {
         onPreviousChallenge={previousChallenge}
         onNextChallenge={nextChallenge}
       />
-
+      <ControlBar />
       <div class='app-grid'>
         <Editors />
         <DesignPanel />

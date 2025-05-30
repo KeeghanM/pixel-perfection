@@ -2,7 +2,6 @@ import * as htmlToImage from 'html-to-image'
 import { createSignal } from 'solid-js'
 import {
   challenge,
-  setChallenge,
   compareAttmepts,
   css,
   currentXp,
@@ -11,7 +10,6 @@ import {
   setCurrentXp,
 } from '../../_store'
 import './compare.scss'
-import Confetti from '../confetti/confetti'
 
 export default function Compare() {
   const [wrongImage, setWrongImage] = createSignal<string | undefined>(
@@ -212,9 +210,6 @@ export default function Compare() {
               style={`width: ${loadingPercentage()}%;`}
             ></div>
             <span class='compare__loading-text'>Calculating...</span>
-            {loadingPercentage() >= 100 && matchPercentage() === 100 ? (
-              <Confetti />
-            ) : null}
           </div>
         ) : (
           <div class='compare__results'>
