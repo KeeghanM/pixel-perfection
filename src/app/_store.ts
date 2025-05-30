@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { Challenge, Challenges } from './Challenges'
+import { type Challenge, Challenges } from './Challenges'
 
 export const [theme, setTheme] = createSignal<'light' | 'dark'>('dark')
 export const [compareAttmepts, setCompareAttempts] = createSignal(0)

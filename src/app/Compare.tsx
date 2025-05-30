@@ -285,24 +285,74 @@ Current total: ${currentXp()}XP`)
                 class='mt-2 text-center text-2xl font-bold'
                 innerHTML={xpGainString()}
               />
-            ) : null}
+            ) : null}{' '}
             <button
               onclick={closeModal}
-              class='mt-2 w-fit cursor-pointer rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700'
+              style='
+                margin-top: 0.5rem;
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 6px;
+                font-weight: 600;
+                font-size: 0.875rem;
+                cursor: pointer;
+                background: linear-gradient(135deg, #dc2626, #b91c1c);
+                color: white;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                width: fit-content;
+              '
+              onMouseEnter={(e) => {
+                ;(e.target as HTMLElement).style.transform = 'translateY(-1px)'
+                ;(e.target as HTMLElement).style.boxShadow =
+                  '0 4px 8px rgba(0, 0, 0, 0.15)'
+              }}
+              onMouseLeave={(e) => {
+                ;(e.target as HTMLElement).style.transform = 'translateY(0)'
+                ;(e.target as HTMLElement).style.boxShadow =
+                  '0 2px 4px rgba(0, 0, 0, 0.1)'
+              }}
             >
               Close
             </button>
           </div>
         )}
-      </div>
+      </div>{' '}
       <button
         disabled={css() == challenge().wrongCSS && html() == challenge().HTML}
-        class={
-          'mx-auto mt-2 h-fit w-fit cursor-pointer rounded px-4 py-2 font-bold text-white ' +
-          (css() != challenge().wrongCSS || html() != challenge().HTML
-            ? ' bg-blue-500 hover:bg-blue-700'
-            : ' cursor-not-allowed bg-gray-500')
-        }
+        style={`
+          margin: 0.5rem auto 0;
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.875rem;
+          cursor: ${css() != challenge().wrongCSS || html() != challenge().HTML ? 'pointer' : 'not-allowed'};
+          background: ${
+            css() != challenge().wrongCSS || html() != challenge().HTML
+              ? 'linear-gradient(135deg, #3b82f6, #1d4ed8)'
+              : '#6b7280'
+          };
+          color: white;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px);
+          display: block;
+        `}
+        onMouseEnter={(e) => {
+          if (css() != challenge().wrongCSS || html() != challenge().HTML) {
+            ;(e.target as HTMLElement).style.transform = 'translateY(-1px)'
+            ;(e.target as HTMLElement).style.boxShadow =
+              '0 4px 8px rgba(0, 0, 0, 0.15)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (css() != challenge().wrongCSS || html() != challenge().HTML) {
+            ;(e.target as HTMLElement).style.transform = 'translateY(0)'
+            ;(e.target as HTMLElement).style.boxShadow =
+              '0 2px 4px rgba(0, 0, 0, 0.1)'
+          }
+        }}
         onClick={runTest}
       >
         Run Comparison
