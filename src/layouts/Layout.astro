@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'
+import '../styles/global.scss'
 interface Props {
   title: string
   description: string
@@ -62,3 +62,35 @@ const { title, description } = Astro.props
     max-height: 300px;
   }
 </style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, observerOptions)
+
+  // Observe all fade-in elements
+  document.querySelectorAll('.fade-in').forEach((el) => {
+    observer.observe(el)
+  })
+
+  // Navigation background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav') as HTMLElement
+    if (!nav) return
+
+    if (window.scrollY > 100) {
+      nav.style.background = 'rgba(10, 10, 10, 0.95)'
+    } else {
+      nav.style.background = 'var(--glass-bg)'
+    }
+  })
+</script>

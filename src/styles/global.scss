@@ -1,7 +1,6 @@
 :root {
   --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
+  --bg-secondary: #272727;
   --border-primary: #2a2a2a;
   --border-secondary: #333333;
   --text-primary: #ffffff;
@@ -30,4 +29,17 @@ body {
   font-weight: 400;
   letter-spacing: -0.01em;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

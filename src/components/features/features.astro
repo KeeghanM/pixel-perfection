@@ -1,0 +1,205 @@
+---
+import FancyText from '../ui/fancy-text/fancy-text.astro'
+import Section from '../ui/section/section.astro'
+---
+
+<Section
+  id='features'
+  subtitle='Professional tools and features designed for serious developers'
+  theme='light'
+>
+  <span slot='title'>
+    Features <FancyText text='Designed for Developers' />
+  </span>
+  <div class='features-grid'>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <polyline points='16,18 22,12 16,6'></polyline>
+          <polyline points='8,6 2,12 8,18'></polyline>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Professional Editor</h3>
+      <p class='feature-description'>
+        Code with syntax highlighting, auto-completion, and real-time preview in
+        our VS Code-inspired editor built for precision.
+      </p>
+    </div>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <path
+            d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'
+          ></path>
+          <polyline points='3.27,6.96 12,12.01 20.73,6.96'></polyline>
+          <line
+            x1='12'
+            y1='22.08'
+            x2='12'
+            y2='12'
+          ></line>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Advanced Comparison</h3>
+      <p class='feature-description'>
+        Pixel-perfect overlay comparisons with diff highlighting to spot even
+        the smallest discrepancies in your implementations.
+      </p>
+    </div>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <circle
+            cx='12'
+            cy='12'
+            r='10'
+          ></circle>
+          <path d='m9 12 2 2 4-4'></path>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Instant Feedback</h3>
+      <p class='feature-description'>
+        Get real-time validation and performance metrics as you code, with
+        detailed explanations for every correction.
+      </p>
+    </div>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'></path>
+          <circle
+            cx='9'
+            cy='7'
+            r='4'
+          ></circle>
+          <path d='M22 21v-2a4 4 0 0 0-3-3.87'></path>
+          <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Global Leaderboard</h3>
+      <p class='feature-description'>
+        Compete with developers worldwide, track your ranking, and showcase your
+        precision coding skills.
+      </p>
+    </div>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <polygon
+            points='12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2'
+          ></polygon>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Progressive Challenges</h3>
+      <p class='feature-description'>
+        From basic CSS to complex React components, our challenges scale with
+        your skill level and unlock new concepts.
+      </p>
+    </div>
+    <div class='feature-card fade-in'>
+      <div class='feature-icon'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+        >
+          <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path>
+        </svg>
+      </div>
+      <h3 class='feature-title'>Developer Focused</h3>
+      <p class='feature-description'>
+        Built by developers, for developers. Keyboard shortcuts, dark mode, and
+        premium UX that feels like home.
+      </p>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .features-section {
+    padding: 8rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+</style>

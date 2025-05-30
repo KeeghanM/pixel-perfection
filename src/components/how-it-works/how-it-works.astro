@@ -1,119 +1,81 @@
 ---
 import FancyText from '../ui/fancy-text/fancy-text.astro'
+import Section from '../ui/section/section.astro'
 ---
 
-<section
-  class='timeline-section'
+<Section
   id='how-it-works'
+  subtitle='A systematic approach to mastering frontend precision through hands-on challenges'
 >
-  <div class='section-container'>
-    <div class='section-header fade-in'>
-      <h2 class='section-title'>
-        How <FancyText text='PixelPerfection' />
-         Works
-      </h2>
-      <p class='section-subtitle'>
-        A systematic approach to mastering frontend precision through hands-on
-        challenges
-      </p>
+  <span slot='title'>
+    How <FancyText text='PixelPerfection' /> Works
+  </span>
+  <div class='timeline'>
+    <div class='timeline-line'></div>
+
+    <div class='timeline-item fade-in'>
+      <div class='timeline-number'>1</div>
+      <div class='timeline-content'>
+        <h3 class='timeline-title'>Choose Your Challenge</h3>
+        <p class='timeline-description'>
+          Select from a curated collection of challenges ranging from basic
+          HTML/CSS to advanced React components. Each challenge is designed to
+          test specific skills and help you develop a keen eye for detail.
+        </p>
+      </div>
     </div>
-    <div class='timeline'>
-      <div class='timeline-line'></div>
 
-      <div class='timeline-item fade-in'>
-        <div class='timeline-number'>1</div>
-        <div class='timeline-content'>
-          <h3 class='timeline-title'>Choose Your Challenge</h3>
-          <p class='timeline-description'>
-            Select from a curated collection of challenges ranging from basic
-            HTML/CSS to advanced React components. Each challenge is designed to
-            test specific skills and help you develop a keen eye for detail.
-          </p>
-        </div>
+    <div class='timeline-item fade-in'>
+      <div class='timeline-number'>2</div>
+      <div class='timeline-content'>
+        <h3 class='timeline-title'>Spot the Differences</h3>
+        <p class='timeline-description'>
+          Use your detective skills to identify inconsistencies between the
+          target design and current implementation. Is it a color that's off?
+          Maybe the spacing isn't quite right? Every pixel matters.
+        </p>
       </div>
+    </div>
 
-      <div class='timeline-item fade-in'>
-        <div class='timeline-number'>2</div>
-        <div class='timeline-content'>
-          <h3 class='timeline-title'>Spot the Differences</h3>
-          <p class='timeline-description'>
-            Use your detective skills to identify inconsistencies between the
-            target design and current implementation. Is it a color that's off?
-            Maybe the spacing isn't quite right? Every pixel matters.
-          </p>
-        </div>
+    <div class='timeline-item fade-in'>
+      <div class='timeline-number'>3</div>
+      <div class='timeline-content'>
+        <h3 class='timeline-title'>Code the Solution</h3>
+        <p class='timeline-description'>
+          Dive into our professional code editor and fix the issues in
+          real-time. Watch as your changes instantly update the preview,
+          bringing you closer to pixel perfection with every keystroke.
+        </p>
       </div>
+    </div>
 
-      <div class='timeline-item fade-in'>
-        <div class='timeline-number'>3</div>
-        <div class='timeline-content'>
-          <h3 class='timeline-title'>Code the Solution</h3>
-          <p class='timeline-description'>
-            Dive into our professional code editor and fix the issues in
-            real-time. Watch as your changes instantly update the preview,
-            bringing you closer to pixel perfection with every keystroke.
-          </p>
-        </div>
+    <div class='timeline-item fade-in'>
+      <div class='timeline-number'>4</div>
+      <div class='timeline-content'>
+        <h3 class='timeline-title'>Achieve Perfection</h3>
+        <p class='timeline-description'>
+          Use our advanced comparison tools to validate your solution. Get
+          instant feedback and achieve that satisfying moment when your design
+          perfectly matches the target.
+        </p>
       </div>
+    </div>
 
-      <div class='timeline-item fade-in'>
-        <div class='timeline-number'>4</div>
-        <div class='timeline-content'>
-          <h3 class='timeline-title'>Achieve Perfection</h3>
-          <p class='timeline-description'>
-            Use our advanced comparison tools to validate your solution. Get
-            instant feedback and achieve that satisfying moment when your design
-            perfectly matches the target.
-          </p>
-        </div>
-      </div>
-
-      <div class='timeline-item fade-in'>
-        <div class='timeline-number'>5</div>
-        <div class='timeline-content'>
-          <h3 class='timeline-title'>Level Up & Compete</h3>
-          <p class='timeline-description'>
-            Earn XP, climb the leaderboard, and unlock new challenges. Track
-            your progress and compete with developers worldwide to become a
-            PixelPerfection champion.
-          </p>
-        </div>
+    <div class='timeline-item fade-in'>
+      <div class='timeline-number'>5</div>
+      <div class='timeline-content'>
+        <h3 class='timeline-title'>Level Up & Compete</h3>
+        <p class='timeline-description'>
+          Earn XP, climb the leaderboard, and unlock new challenges. Track your
+          progress and compete with developers worldwide to become a
+          PixelPerfection champion.
+        </p>
       </div>
     </div>
   </div>
-</section>
+</Section>
 
 <style lang='scss'>
-  .timeline-section {
-    padding: 8rem 0;
-    position: relative;
-  }
-
-  .section-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
   .timeline {
     position: relative;
     max-width: 1000px;
@@ -257,16 +219,4 @@ import FancyText from '../ui/fancy-text/fancy-text.astro'
       max-width: 450px;
     }
   }
-
-  // Animation support
-  //   .fade-in {
-  //     opacity: 0;
-  //     transform: translateY(30px);
-  //     transition: all 0.6s ease;
-
-  //     &.visible {
-  //       opacity: 1;
-  //       transform: translateY(0);
-  //     }
-  //   }
 </style>
