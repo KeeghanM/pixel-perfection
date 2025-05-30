@@ -4,7 +4,7 @@ import { type Challenge, Challenges } from './Challenges'
 export const [theme, setTheme] = createSignal<'light' | 'dark'>('dark')
 export const [compareAttmepts, setCompareAttempts] = createSignal(0)
 export const [currentXp, setCurrentXp] = createSignal<number>(0)
-export const [challenge, setChallenge] = createSignal<Challenge>(Challenges[0])
+export const [challenge, setChallenge] = createSignal<Challenge>(Challenges[2])
 export const [css, setCss] = createSignal('')
 export const [html, setHtml] = createSignal('')
 export const [displayColor, setDisplayColor] = createSignal<'light' | 'dark'>(

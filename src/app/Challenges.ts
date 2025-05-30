@@ -6,8 +6,6 @@ export type Challenge = {
   description: string
   correctCSS: string
   wrongCSS: string
-  width: number
-  height: number
 }
 
 export const Challenges: Challenge[] = [
@@ -16,8 +14,6 @@ export const Challenges: Challenge[] = [
     name: 'Tutorial Challenge',
     description:
       "Welcome to the tutorial! All you need to do is correct the below invalid CSS to make the 'wrong' design look like the 'correct' design.",
-    width: 300,
-    height: 100,
     HTML: `<h1>
   <span>Hello,</span> world.
 </h1>`,
@@ -38,8 +34,6 @@ export const Challenges: Challenge[] = [
     name: 'Size matters!',
     description:
       "On something as simple as an input, details matter. Make the 'wrong' design look like the 'correct' design.",
-    width: 500,
-    height: 130,
     HTML: `<div>
   <input type="text" placeholder="Enter your name here" />
   <button>Submit</button>
@@ -92,8 +86,6 @@ button {
     name: 'Dealers choice',
     description:
       "Cards are a commonplace element in modern web design, but they're not always easy to get right. Make the 'wrong' design look like the 'correct' design.",
-    width: 400,
-    height: 400,
     HTML: `<div>
   <div class="card">
     <div class="inner">

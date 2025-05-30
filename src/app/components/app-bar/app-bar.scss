@@ -132,7 +132,7 @@
     &-circle {
       width: 36px;
       height: 36px;
-      border-radius: 8px;
+      border-radius: 50%;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       display: flex;
       align-items: center;
@@ -140,7 +140,6 @@
       font-weight: 600;
       font-size: 0.875rem;
       transition: all 0.2s ease;
-      border: 1px solid var(--glass-border);
     }
   }
 }
