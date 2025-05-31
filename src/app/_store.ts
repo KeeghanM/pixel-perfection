@@ -8,7 +8,7 @@ export const [challenge, setChallenge] = createSignal<Challenge>(Challenges[0])
 export const [css, setCss] = createSignal('')
 export const [html, setHtml] = createSignal('')
 export const [displayColor, setDisplayColor] = createSignal<'light' | 'dark'>(
-  'light'
+  'dark'
 )
 export const [globalCss, setGlobalCss] = createSignal(
   `

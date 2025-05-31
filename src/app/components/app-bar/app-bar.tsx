@@ -86,9 +86,6 @@ export default function AppBar(props: TAppBar) {
           <span class='app-bar__xp-value'>{currentXp()}</span>
           <span class='app-bar__xp-label'>XP</span>
         </div>
-        <div class='app-bar__user-avatar'>
-          <div class='app-bar__user-avatar-circle'>JD</div>
-        </div>
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import { createMemo } from 'solid-js'
 import { challenge, displayColor, globalCss } from '../../_store'
 import './display.scss'
 
@@ -6,17 +7,10 @@ export default function Display(props: {
   css: string
   type: 'correct' | 'wrong'
 }) {
-  return (
-    <div
-      class='design-display'
-      style={{"height":"100%","width":"100%"}}
-    >
-      <iframe
-        id={`${props.type}Iframe`}
-        title={`${props.type}Iframe`}
-        class='design-display__iframe'
-        style={{"height":"100%","width":"100%"}}
-        srcdoc={`<html>
+  // Create a memo to ensure srcdoc is properly regenerated when dependencies change
+  const srcdocContent = createMemo(
+    () =>
+      `<html>
   <head>
     <style>
       ${globalCss()}
@@ -27,7 +21,20 @@ export default function Display(props: {
   <body class="${displayColor()}">
     ${props.html}
   </body>
-</html>`}
+</html>`
+  )
+
+  return (
+    <div
+      class='design-display'
+      style={{ height: '100%', width: '100%' }}
+    >
+      <iframe
+        id={`${props.type}Iframe`}
+        title={`${props.type}Iframe`}
+        class='design-display__iframe'
+        style={{ height: '100%', width: '100%' }}
+        srcdoc={srcdocContent()}
       />
     </div>
   )
