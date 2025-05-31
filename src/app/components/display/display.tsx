@@ -2,6 +2,7 @@ import { challenge, displayColor, globalCss } from '../../_store'
 import './display.scss'
 
 export default function Display(props: {
+  html: string
   css: string
   type: 'correct' | 'wrong'
 }) {
@@ -23,7 +24,7 @@ export default function Display(props: {
     </style>
   </head>
   <body class="${displayColor()}">
-    ${challenge().HTML}
+    ${props.html}
   </body>
 </html>`}
       />

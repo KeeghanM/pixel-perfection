@@ -1,5 +1,5 @@
 import Display from '../display/display'
-import { challenge, css, displayColor } from '../../_store'
+import { challenge, css, html, displayColor } from '../../_store'
 import './design-panel.scss'
 
 export default function DesignPanel() {
@@ -10,6 +10,7 @@ export default function DesignPanel() {
           Target
         </div>
         <Display
+          html={challenge().HTML}
           css={challenge().correctCSS}
           type='correct'
         />
@@ -19,6 +20,7 @@ export default function DesignPanel() {
           Current
         </div>
         <Display
+          html={html()}
           css={css()}
           type='wrong'
         />

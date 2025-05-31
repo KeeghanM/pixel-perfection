@@ -119,15 +119,15 @@ export default function Compare() {
           (wrongRed == 254 &&
             wrongGreen == 254 &&
             wrongBlue == 254 &&
-            correctRed == 255 &&
-            correctGreen == 255 &&
-            correctBlue == 255) ||
-          (wrongRed == 101 &&
-            wrongGreen == 101 &&
-            wrongBlue == 101 &&
-            correctRed == 101 &&
-            correctGreen == 101 &&
-            correctBlue == 101)
+            correctRed == 254 &&
+            correctGreen == 254 &&
+            correctBlue == 254) ||
+          (wrongRed == 30 &&
+            wrongGreen == 30 &&
+            wrongBlue == 30 &&
+            correctRed == 30 &&
+            correctGreen == 30 &&
+            correctBlue == 30)
         ) {
           skipped++
           continue
