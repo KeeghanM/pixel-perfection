@@ -478,10 +478,7 @@ export const Challenges: Challenge[] = [
     </div>
   </div>
 </article>`,
-    generalCSS: `body {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      padding: 2rem;
-    }`,
+    generalCSS: '',
     correctCSS: `.card {
   background: white;
   border-radius: 20px;
@@ -662,9 +659,7 @@ export const Challenges: Challenge[] = [
   </ul>
   <button>Get Started</button>
 </div>`,
-    generalCSS: `body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }`,
+    generalCSS: '',
     correctCSS: `.pricing-card {
   background: white;
   border-radius: 16px;

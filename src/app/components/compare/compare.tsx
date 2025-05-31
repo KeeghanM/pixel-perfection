@@ -1,5 +1,5 @@
 import * as htmlToImage from 'html-to-image'
-import { createSignal } from 'solid-js'
+import { createSignal, type JSX } from 'solid-js'
 import {
   challenge,
   compareAttmepts,
@@ -22,8 +22,10 @@ export default function Compare() {
   const [matchPercentage, setMatchPercentage] = createSignal(0)
   const [modalShown, setModalShown] = createSignal(false)
   const [loadingPercentage, setLoadingPercentage] = createSignal(0)
-  const [sizeString, setSizeString] = createSignal('')
-  const [xpGainString, setXpGainString] = createSignal('')
+  const [sizeStyle, setSizeStyle] = createSignal<{ [key: string]: string }>({})
+  const [xpGainDisplay, setXpGainDisplay] = createSignal<JSX.Element | null>(
+    null
+  )
 
   const calculateColor = (weightedPercentage: number): string => {
     let r, g
@@ -76,7 +78,7 @@ export default function Compare() {
     setCorrectImage(undefined)
     setMatchPercentage(0)
     setOpacity(0.5)
-    setXpGainString('')
+    setXpGainDisplay(null)
 
     const wrongIframe = document.getElementById(
       'wrongIframe'
@@ -91,9 +93,10 @@ export default function Compare() {
     const wrongUrl = await htmlToImage.toPng(wrongScreen)
     const wrongData = await imageToPixelData(wrongUrl)
     const wrongPixelData = wrongData?.data
-    setSizeString(
-      `width: ${wrongData?.size.width}px; height: ${wrongData?.size.height}px;`
-    )
+    setSizeStyle({
+      width: `${wrongData?.size.width}px`,
+      height: `${wrongData?.size.height}px`,
+    })
 
     const correctUrl = await htmlToImage.toPng(correctScreen)
     const correctData = await imageToPixelData(correctUrl)
@@ -160,8 +163,12 @@ export default function Compare() {
       localStorage.getItem('completedChallenges') || '[]'
     )
     if (completedChallenges.includes(challenge().id)) {
-      setXpGainString(
-        `Challenge already completed!<br />No XP gained.<br />Current total: ${currentXp()}XP`
+      setXpGainDisplay(
+        <>
+          <div>Challenge already completed!</div>
+          <div>No XP gained.</div>
+          <div>Current total: {currentXp()}XP</div>
+        </>
       )
       return
     }
@@ -180,8 +187,17 @@ export default function Compare() {
     const totalXp = JSON.parse(localStorage.getItem('totalXp') || '0')
     localStorage.setItem('totalXp', JSON.stringify(totalXp + clampedXp))
 
-    setXpGainString(
-      `${challenge().id > 0 ? `1000XP<br>- 50 * ${compareAttmepts() - 1} comparisons<br>` : ''}= +${clampedXp}XP<br />New total: ${currentXp()}XP`
+    setXpGainDisplay(
+      <>
+        {challenge().id > 0 && (
+          <>
+            <div>1000XP</div>
+            <div>- 50 * {compareAttmepts() - 1} comparisons</div>
+          </>
+        )}
+        <div>= +{clampedXp}XP</div>
+        <div>New total: {currentXp()}XP</div>
+      </>
     )
   }
 
@@ -196,9 +212,16 @@ export default function Compare() {
   return (
     <>
       <div
-        onclick={closeModal}
+        onClick={closeModal}
+        role='button'
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            closeModal()
+          }
+        }}
         class={`compare__overlay ${modalShown() ? '' : 'compare__overlay--hidden'}`}
-      ></div>
+      />
 
       <div
         class={`compare__modal ${modalShown() ? '' : 'compare__modal--hidden'}`}
@@ -207,8 +230,8 @@ export default function Compare() {
           <div class='compare__loading'>
             <div
               class='compare__loading-bar'
-              style={`width: ${loadingPercentage()}%;`}
-            ></div>
+              style={{ width: `${loadingPercentage()}%;` }}
+            />
             <span class='compare__loading-text'>Calculating...</span>
           </div>
         ) : (
@@ -217,7 +240,7 @@ export default function Compare() {
               Match Percentage:{' '}
               <span
                 class='compare__percentage'
-                style={`color: ${calculateColor(matchPercentage())}`}
+                style={{ color: calculateColor(matchPercentage()) }}
               >
                 {Math.round(matchPercentage() * 100) / 100}%
               </span>
@@ -231,38 +254,35 @@ export default function Compare() {
                 max='1'
                 step='0.01'
                 value={opacity()}
-                oninput={(e) => setOpacity(parseFloat(e.target.value))}
+                onInput={(e) => setOpacity(parseFloat(e.target.value))}
               />
               <p>Wrong</p>
             </div>
             <div
               class='compare__image-container'
-              style={sizeString()}
+              style={sizeStyle()}
             >
               <div class='compare__image-layer'>
                 <img
                   src={correctImage()}
-                  alt='Correct Image'
+                  alt='Correct Design'
                 />
               </div>
               <div
                 class='compare__image-layer compare__image-layer--overlay'
-                style={`opacity: ${opacity()};`}
+                style={{ opacity: opacity() }}
               >
                 <img
                   src={wrongImage()}
-                  alt='Wrong Image'
+                  alt='Your Design'
                 />
               </div>
             </div>
-            {xpGainString() !== '' ? (
-              <p
-                class='compare__xp-display'
-                innerHTML={xpGainString()}
-              />
-            ) : null}
+            {xpGainDisplay() && (
+              <div class='compare__xp-display'>{xpGainDisplay()}</div>
+            )}
             <button
-              onclick={closeModal}
+              onClick={closeModal}
               class='compare__close-button'
             >
               Close

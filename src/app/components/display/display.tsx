@@ -9,12 +9,13 @@ export default function Display(props: {
   return (
     <div
       class='design-display'
-      style='height: 100%; width: 100%;'
+      style={{"height":"100%","width":"100%"}}
     >
       <iframe
         id={`${props.type}Iframe`}
+        title={`${props.type}Iframe`}
         class='design-display__iframe'
-        style='height: 100%; width: 100%;'
+        style={{"height":"100%","width":"100%"}}
         srcdoc={`<html>
   <head>
     <style>

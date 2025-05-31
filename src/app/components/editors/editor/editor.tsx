@@ -89,6 +89,6 @@ export default function Editor(props: TEditor) {
     <div
       ref={editorRef}
       class='editor'
-    ></div>
+     />
   )
 }

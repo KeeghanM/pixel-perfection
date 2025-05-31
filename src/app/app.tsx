@@ -1,21 +1,18 @@
-import { onMount, createSignal } from 'solid-js'
+import { createSignal, onMount } from 'solid-js'
 import {
   challenge,
+  setChallenge,
+  setCompareAttempts,
   setCss,
   setCurrentXp,
   setHtml,
-  setChallenge,
-  setCompareAttempts,
-  setDisplayColor,
-  displayColor,
 } from './_store'
+import './app.scss'
 import { Challenges } from './Challenges'
 import AppBar from './components/app-bar/app-bar'
-import DesignPanel from './components/design-panel/design-panel'
-import './app.scss'
-import Editors from './components/editors/editors'
-import Compare from './components/compare/compare'
 import ControlBar from './components/control-bar/control-bar'
+import DesignPanel from './components/design-panel/design-panel'
+import Editors from './components/editors/editors'
 
 export default function App() {
   const [currentChallenge, setCurrentChallenge] = createSignal(0)

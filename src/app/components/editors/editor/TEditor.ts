@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars -- it doesn't think text is used... */
 export interface TEditor {
   type: 'HTML' | 'CSS'
   text: () => string

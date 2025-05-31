@@ -1,14 +1,10 @@
+import Button from '../../../components/ui/button/button'
 import { challenge, currentXp } from '../../_store'
 import { Challenges } from '../../Challenges'
-import type { TAppBar } from './TAppBar'
 import './app-bar.scss'
-import Button from '../../../components/ui/button/button'
+import type { TAppBar } from './TAppBar'
 
-export default function AppBar({
-  currentChallenge,
-  onPreviousChallenge,
-  onNextChallenge,
-}: TAppBar) {
+export default function AppBar(props: TAppBar) {
   return (
     <div class='app-bar'>
       <div class='app-bar__left-section'>
@@ -19,10 +15,10 @@ export default function AppBar({
         <Button
           type='button'
           theme='primary'
-          variant={currentChallenge() === 0 ? 'ghost' : 'outline'}
+          variant={props.currentChallenge() === 0 ? 'ghost' : 'outline'}
           size='small'
-          disabled={currentChallenge() === 0}
-          onClick={onPreviousChallenge}
+          disabled={props.currentChallenge() === 0}
+          onClick={props.onPreviousChallenge}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -52,10 +48,12 @@ export default function AppBar({
           theme='primary'
           size='small'
           variant={
-            currentChallenge() === Challenges.length - 1 ? 'ghost' : 'outline'
+            props.currentChallenge() === Challenges.length - 1
+              ? 'ghost'
+              : 'outline'
           }
-          disabled={currentChallenge() === Challenges.length - 1}
-          onClick={onNextChallenge}
+          disabled={props.currentChallenge() === Challenges.length - 1}
+          onClick={props.onNextChallenge}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
