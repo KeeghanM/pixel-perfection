@@ -34,16 +34,4 @@ import Features from '../components/features/features.astro'
   document.querySelectorAll('.fade-in').forEach((el) => {
     observer.observe(el)
   })
-
-  // Navigation background on scroll
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.nav') as HTMLElement
-    if (!nav) return
-
-    if (window.scrollY > 100) {
-      nav.style.background = 'rgba(10, 10, 10, 0.95)'
-    } else {
-      nav.style.background = 'var(--glass-bg)'
-    }
-  })
 </script>
